@@ -1,0 +1,169 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+  <title>viz-kgrc-rdf-bbox-x3dom_virtualhome2kg-Admire_paintings_README</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+</head>
+<body>
+
+    
+    <div class="container mt-5">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <h1 id="virtualhome2kg-admire_paintings.ttlのbboxを描いてみる"><a
+href="https://github.com/s246wv/viz-kgrc-rdf-bbox-x3dom">virtualhome2kg-Admire_paintings.ttlのbboxを描いてみる</a></h1>
+<h2 id="概要">概要</h2>
+<p>本作品は，<a
+href="https://github.com/KnowledgeGraphJapan/KGRC-RDF/tree/kgrc4si">ナレッジグラフ推論チャレンジ【実社会版】のデータ</a>の内，ナレッジグラフ(Linked
+Open Data)の一部を3次元モデルとして可視化する試みです．<br />
+ナレッジグラフ推論チャレンジは”人工知能技術による推論（推定）に関して、認識の共有と必要な技術の開発・促進を図ることを目的としたコンテスト”[1]とされています．特に，ナレッジグラフ推論チャレンジ【実社会版】では，高齢者の生活断片から作成されたナレッジグラフ[2]等が提供され，家庭内の生活における危険な状況の検出，生活行動ナレッジグラフの作成，定量的評価基準の作成がチャレンジタスクとして設定されています[3]．<br />
+このナレッジグラフは，VirtualHome2KG[4,
+5]に基づいたデータスキーマで提供されています．このデータスキーマは，<code>:Object</code>の<code>:State</code>を<code>:partOf</code>として持つ<code>:Situation</code>が前後(<code>:situationBeforeEvent</code>,
+<code>:situationAfterEvent</code>)につながっている<code>:Event</code>の系列として，生活行動を表現することを可能にしています．本作品では，そのナレッジグラフから<code>:Object</code>のバウンディングボックスを取り出し，x3dom[6]を用いて3次元モデルとして可視化を試みました．これにより，ナレッジグラフによる計算機による意味の取り扱いに，オブジェクトがどのように動いているのかを3次元モデルをくるくると回しながら人間が確認しやすくなるという特徴を追加することを意図しました．</p>
+<h3 id="参考文献">参考文献</h3>
+<p>[1] ナレッジグラフ推論チャレンジ【実社会版】2022
+〜生活行動における安心・安全を目指して〜,
+https://challenge.knowledge-graph.jp/2022/index.html Accessed 09 October
+2022.<br />
+[2] Shusaku Egami, Satoshi Nishimura, and Ken Fukuda. A Framework for
+Constructing and Augmenting Knowledge Graphs using Virtual Space:
+Towards Analysis of Daily Activities. Proceedings of the 33rd IEEE
+International Conference on Tools with Artificial Intelligence
+(ICTAI2021), pp. 1226–1230, 11 2021.<br />
+[3] 応募要領 | ナレッジグラフ推論チャレンジ,
+https://challenge.knowledge-graph.jp/2022/application.html Accessed 09
+October 2022.<br />
+[4] Shusaku Egami, Satoshi Nishimura, and Ken Fukuda. VirtualHome2KG:
+Constructing and Augmenting Knowledge Graphs of Daily Activities Using
+Virtual Space. Proceedings of the ISWC 2021 Posters, Demos and Industry
+Tracks: From Novel Ideas to Industrial Practice co-located with 20th
+International Semantic Web Conference (ISWC 2021), Vol. 2980, No. 381,
+10 2021.<br />
+[5] VirtualHome2KG/Ontology,
+https://github.com/aistairc/VirtualHome2KG/tree/main/ontology Accessed
+09 October 2022.<br />
+[6] x3dom.org, https://www.x3dom.org/ Accessed 09 October 2022.</p>
+<h2 id="デモ">デモ</h2>
+<figure>
+<img
+src="https://github.com/s246wv/viz-kgrc-rdf-bbox-x3dom/raw/master/virtualhome2kg-Admire_paintings/demo.gif"
+alt="demo" />
+<figcaption aria-hidden="true">demo</figcaption>
+</figure>
+<h2 id="必要なもの">必要なもの</h2>
+<ul>
+<li>新しいウェブブラウザ
+<ul>
+<li>詳しくは，<a href="https://www.x3dom.org/contact/">x3domのBrowser
+support</a>をご参照ください．</li>
+</ul></li>
+<li>インターネット
+<ul>
+<li>静的なhtmlファイルに見えますが，x3domにあるjavascriptを使っているので，インターネットアクセスが必要です．</li>
+</ul></li>
+</ul>
+<h2 id="使い方">使い方</h2>
+<ul>
+<li>virtualhome2kg-Admire_paintings.htmlをウェブブラウザで開いてください．<br />
+</li>
+<li>操作方法は下記の通りです．より詳細な情報は<a
+href="https://doc.x3dom.org/tutorials/animationInteraction/navigation/index.html">x3domのNavigationページ</a>をご参照ください．</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>機能</th>
+<th>マウスボタン</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>回転</td>
+<td>左 / 左 + Shift</td>
+</tr>
+<tr class="even">
+<td>パン</td>
+<td>真ん中 / 左 + Ctrl</td>
+</tr>
+<tr class="odd">
+<td>ズーム</td>
+<td>右 / ホイール / 左 + Alt</td>
+</tr>
+<tr class="even">
+<td>描画対象が真ん中に来るようにする</td>
+<td>左をダブルクリック</td>
+</tr>
+<tr class="odd">
+<td>ビューを初期値に戻す</td>
+<td>キーボードのA</td>
+</tr>
+<tr class="even">
+<td>小さいものも表示する</td>
+<td>キーボードのS</td>
+</tr>
+</tbody>
+</table>
+<h2
+id="virtualhome2kg-admire_paintings.htmlの作り方">virtualhome2kg-Admire_paintings.htmlの作り方</h2>
+<ol type="1">
+<li><code>query_firstSituation.rq</code>と<code>query_nextSituation.rq</code>で必要な情報をjson形式で取得します．
+<ul>
+<li><code>query_nextSituation.rq</code>では，filterで一つ前の<code>:Situation</code>を指定してください．</li>
+</ul></li>
+<li><code>make_html.py</code>を動かす．
+<ul>
+<li>特別なパッケージは必要ないはずです．</li>
+<li>1で取得したjsonはvirtualhome2kg-Admire_paintings向けにハードコーディングしてしまっています．他のアクティビティに適用する際には，適宜修正してください．</li>
+</ul></li>
+</ol>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
