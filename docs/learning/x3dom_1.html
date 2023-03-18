@@ -139,7 +139,7 @@ X3DOM</a>を見ながら，<code>box</code>の<code>size</code>フィールド�
 class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;box</span> <span class="er">size</span><span class="ot">=</span><span class="st">&quot;0.1019944,0.1218873,0.1132656&quot;</span> <span class="er">solid</span><span class="ot">=</span><span class="st">&quot;false&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;/box&gt;</span></span></code></pre></div>
 <p>ボックスの中のボックスが見えるように描画したかったので，<code>solid</code>フィールドは<code>false</code>にしています．これを<code>true</code>にすると，表面だけが描画されます．
 詳細な仕様は<a
-href="https://doc.x3dom.org/author/Geometry3D/Box.html">こちら</a></p>
+href="https://doc.x3dom.org/author/Geometry3D/Box.html">こちら</a>をご参照ください．</p>
 <h3 id="動きの設定">動きの設定</h3>
 <p>部屋を表すボックスの中を，人を表すボックスが動いている様子を表現するために，ボックスを動かします．<br />
 こちらもTutorialが用意されいます．<a
@@ -147,9 +147,9 @@ href="https://doc.x3dom.org/tutorials/animationInteraction/animate/index.html">A
 Objects with Routes</a><br />
 ざっくりと，次の3つの要素で構成されます．<br />
 1.
-<code>timeSensor</code>：アニメーションの継続時間やループするか等を設定します．
+<code>timeSensor</code>：アニメーションの継続時間やループするか等を設定します．<br />
 2.
-<code>PositionInterpolator</code>：ボックスがどの時間点にどこにあるかを設定します．
+<code>PositionInterpolator</code>：ボックスがどの時間点にどこにあるかを設定します．<br />
 3.
 <code>Route</code>：上記1と2とボックスをつなぎます．どのボックスがどの時間でどの場所に動くかの関係性を表します．</p>
 <p>例えば，こんな感じです．</p>
