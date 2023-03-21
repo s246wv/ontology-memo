@@ -53,7 +53,7 @@
       gtag('config', 'G-EHNT2JS6H2');
     </script>
   <meta name="author" content="s246wv" />
-  <title>説得力のある備忘録</title>
+  <title>pythonのもろもろ</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
 </head>
@@ -63,7 +63,7 @@
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">説得力のある備忘録</span>
+        <span class="doc-title">pythonのもろもろ</span>
         <ul class="nav pull-right doc-info">
                     <li><p class="navbar-text">s246wv</p></li>
                             </ul>
@@ -75,81 +75,67 @@
             <div class="col-12">
 
       
-      <h1 id="index-page">index page</h1>
-<p>アウトプットのためにWebサイトを作りました．<br />
-基本方針は，個人製作のために調べた情報を整理して，困ったときにここを見返せば情報へのリンクを見つけられるブックマーク的なものを作ります．手元のwebブラウザのタブが調べものでどんどん増えているので，タブを閉じるためにも情報をこちらに書き込んでいこうと思います．</p>
-<h2 id="個人制作物へのリンク">個人制作物へのリンク</h2>
-<details open>
-<summary>
-index
-</summary>
-<div>
-<ol type="1">
+      <h1 id="pythonのもろもろ">pythonのもろもろ</h1>
+<p>pythonでもろもろの処理をしたいときはこちらのサイトを参考にさせて頂いております．<br />
+https://note.nkmk.me/python-post-summary/<br />
+すごくよくまとまっているので，下記は自分がよく使うものへのリンクをまとめた備忘録です．</p>
+<ul>
+<li>ローカルにあるファイルを読んで，諸々処理するときによく使うもの
+<ul>
 <li><a
-href="./project/viz-kgrc-rdf-bbox-x3dom_virtualhome2kg-Admire_paintings_README.html">viz-kgrc-rdf-bbox-x3dom_virtualhome2kg-Admire_paintings_README</a>
-2023-03-14 更新</li>
+href="https://note.nkmk.me/python-glob-usage/">Pythonで条件を満たすパスの一覧を再帰的に取得するglobの使い方</a>
+<ul>
+<li>このブログのインデックスを作る時などに利用してます．</li>
+</ul></li>
 <li><a
-href="./project/ISARC-bibtex-rdf_README.html">ISARC-bibtex-rdf_README</a>
-2023-03-21 更新</li>
+href="https://note.nkmk.me/python-os-basename-dirname-split-splitext/">Pythonでパス文字列からファイル名・フォルダ名・拡張子を取得、結合</a>
+<ul>
+<li>上に同じ</li>
+</ul></li>
+</ul></li>
+<li>pandas
+<ul>
+<li>https://note.nkmk.me/pandas/</li>
 <li><a
-href="./project/ISARC-bibtex-rdf_acm_ccs_emb_README.html">ISARC-bibtex-rdf_acm_ccs_emb_README</a>
-2023-03-21 更新</li>
-</ol>
-</div>
-</details>
-<h2 id="個人制作のために調べた情報">個人制作のために調べた情報</h2>
-<details open>
-<summary>
-index
-</summary>
-<div>
-<ol type="1">
-<li><a href="./learning/bibtex2rdf.html">bibtex2rdf</a> 2023-03-21
-更新</li>
-<li><a href="./learning/pandoc_1.html">pandoc_1</a> 2023-03-20 更新</li>
-<li><a href="./learning/x3dom_1.html">x3dom_1</a> 2023-03-18 更新</li>
-<li><a href="./learning/pythonもろもろ_1.html">pythonもろもろ_1</a>
-2023-03-21 更新</li>
-</ol>
-</div>
-</details>
-<h2 id="論文の感想">論文の感想</h2>
-<details open>
-<summary>
-index
-</summary>
-<div>
-<ol type="1">
+href="https://note.nkmk.me/python-pandas-to-csv/">pandasでcsvファイルの書き出し・追記（to_csv）</a>
+<ul>
+<li><code>to_csv()</code>メソッドの引数を確認するのによくお世話になっております．</li>
+</ul></li>
 <li><a
-href="./paper/A-Dynamic-Theory-of-Organizational-Knowledge-Creation.html">A-Dynamic-Theory-of-Organizational-Knowledge-Creation</a>
-2023-03-14 更新</li>
+href="https://note.nkmk.me/python-pandas-read-csv-tsv/">pandasでcsv/tsvファイル読み込み（read_csv,
+read_table）</a>
+<ul>
+<li><code>read_csv()</code>メソッドの引数を確認するのによくお世話になっております．</li>
+</ul></li>
 <li><a
-href="./paper/An-ontology-for-the-Business-Process-Modelling-Notation.html">An-ontology-for-the-Business-Process-Modelling-Notation</a>
-2023-03-19 更新</li>
+href="https://note.nkmk.me/python-pandas-concat/">pandas.DataFrame,
+Seriesを連結するconcat</a>
+<ul>
+<li>データの成形をしたいときに利用します．「<code>axis=1</code>とすると横方向に連結される。」ここをよく忘れます．</li>
+</ul></li>
 <li><a
-href="./paper/An-Open-Repository-Model-for-Acquiring-Knowledge-about-Scientific-Experiments.html">An-Open-Repository-Model-for-Acquiring-Knowledge-about-Scientific-Experiments</a>
-2023-03-18 更新</li>
+href="https://note.nkmk.me/python-pandas-dataframe-rename/">pandas.DataFrameの行名・列名の変更</a>
+<ul>
+<li>上に同じ</li>
+</ul></li>
 <li><a
-href="./paper/Adjective-Semantics-in-Open-Knowledge-Extraction.html">Adjective-Semantics-in-Open-Knowledge-Extraction</a>
-2023-03-16 更新</li>
+href="https://note.nkmk.me/python-pandas-sample/">pandasの行・列をランダムサンプリング（抽出）するsample</a>
+<ul>
+<li>上に同じ．「引数<code>frac</code>で抽出する行・列の割合を指定できる。<code>1</code>だと100%。」ここをよく忘れます．</li>
+</ul></li>
+</ul></li>
+<li>そのほか便利
+<ul>
 <li><a
-href="./paper/A-Molecular-Structure-Ontology-for-Medical-Chemistry.html">A-Molecular-Structure-Ontology-for-Medical-Chemistry</a>
-2023-03-15 更新</li>
-<li><a
-href="./paper/A-Formal-Ontology-of-Texts.html">A-Formal-Ontology-of-Texts</a>
-2023-03-14 更新</li>
-<li><a
-href="./paper/Antipattern-Comprehension-An-Empirical-Evaluation.html">Antipattern-Comprehension-An-Empirical-Evaluation</a>
-2023-03-20 更新</li>
-<li><a
-href="./paper/An-Intelligent-Data-Analysis-Framework-for-Supporting-Perception-of-Geospatial-Phenomena.html">An-Intelligent-Data-Analysis-Framework-for-Supporting-Perception-of-Geospatial-Phenomena</a>
-2023-03-17 更新</li>
-</ol>
-</div>
-</details>
-<p>【問い合わせ先】<br />
-本サイトに関してのお問合せは<a
-href="https://github.com/s246wv/ontology-memo/issues">issues</a>までお願いいたします。</p>
+href="https://note.nkmk.me/python-datetime-usage/">Pythonのdatetimeで日付や時間と文字列を変換（strftime,
+strptime）</a></li>
+<li><a href="https://note.nkmk.me/python-if-name-main/">Pythonのif
+__name__ == ’__main__’の意味と使い方</a></li>
+</ul></li>
+</ul>
+<p>以上です．</p>
+<h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
+pageへ戻る</a></h2>
             </div>
     </div>
   </div>
