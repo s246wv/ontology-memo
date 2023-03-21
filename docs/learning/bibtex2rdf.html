@@ -53,7 +53,7 @@
       gtag('config', 'G-EHNT2JS6H2');
     </script>
   <meta name="author" content="s246wv" />
-  <title>ACM CCSを紐づける</title>
+  <title>bibtex2rdfについて</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">ACM CCSを紐づける</span>
+        <span class="doc-title">bibtex2rdfについて</span>
         <ul class="nav pull-right doc-info">
                     <li><p class="navbar-text">s246wv</p></li>
                             </ul>
@@ -140,63 +140,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <div class="col-12">
 
       
-      <h1 id="acm-ccsを紐づける"><a
-href="https://github.com/s246wv/ISARC-bibtex-rdf/tree/main/acm_ccs_emb">ACM
-CCSを紐づける</a></h1>
-<h2 id="概要">概要</h2>
-<p>本作品は、ISARC bibtexRDFのキーワードに対してACM Computing
-Classification System (ACM
-CCS)の語を対応づけるためのスクリプト及び生成されたrdfファイルです。</p>
-<p>ISARC
-bibtexRDFでは、従来のbibtex2rdfで扱われていなかったキーワード情報をrdfファイルに付加する方法を示しました。しかし、キーワードは著者らが自由に記載できるため、文字列一致で文献検索に利用する場合、類似語であるにも関わらず検索結果から漏れる可能性があります。加えて、計算機科学分野に慣れ親しんだものが他分野の文献を検索する際に、適切なキーワードを選択できない可能性があります。
-本作品では、その課題を解決するために、ACM
-CCSとの類似度を計算し、キーワードとの関連付けを行いました。具体的には、各キーワードをSentence-BERTを用いてベクトル空間に埋め込み、キーワード間のコサイン類似度を計算します。類似度をランキングし、トップ5までをrdfファイルに付加します。</p>
-<p>本作品により、ACM
-CCSに反映された計算機科学の知見を利用して、計算機科学と他分野を横断するような分野の文献検索を容易にするLODを作成することができます。</p>
-<h2 id="必要なもの">必要なもの</h2>
-<p><code>../requirements.txt</code>に書いているpythonのパッケージたち<br />
-keywordが含まれたttlファイル<br />
-<code>retrieveKeyword.rq</code>: このフォルダに入ってます．<br />
-<code>acm_ccs2012-1626988337597.xml</code>: このフォルダに入ってます．<a
-href="https://dl.acm.org/pb-assets/dl_ccs/acm_ccs2012-1626988337597.xml">こちら</a>から頂きました．<br />
-<code>acm_ccs_emb.json</code>:
-このフォルダに入ってます．<code>embed4AcmCcs.py</code>を動かしても得られます．</p>
+      <h1 id="bibtex2rdfについて">bibtex2rdfについて</h1>
+<p><a
+href="https://s246wv.work/project/ISARC-bibtex-rdf_README.html">bibtexからrdfを作る</a>を作る際に，利用したモジュールについて説明します．</p>
+<h2 id="bibtex2rdfとは">bibtex2rdfとは</h2>
+<p>LaTeXで文献リストを作成する際に用いられるBibTeXフォーマットで表現された文献情報をRDFへ変換する変換器です．
+https://bibtex2rdf.sourceforge.net/</p>
 <h2 id="使い方">使い方</h2>
+<p>詳細な使い方は，<a
+href="https://bibtex2rdf.sourceforge.net/">公式サイト</a>をご確認ください．
+基本的な使い方は，下記の通りです．</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./runAll.sh</span> hoge.ttl retrieveKeyword.rq</span></code></pre></div>
-<ul>
-<li><code>hoge.ttl</code>はkeywordsが含まれたものとしてください．</li>
-<li>個別のpythonスクリプトの説明はおいおい整備します．</li>
-</ul>
-<h2 id="できたもの">できたもの</h2>
-<ul>
-<li>例えば，<a
-href="https://github.com/s246wv/ISARC-bibtex-rdf/blob/main/isarc/2022/isarc2022withACMCSS.bib.ttl">isarc2022withACMCSS.bib.ttl</a></li>
-<li>下記のSPARQLクエリでキーワードに対して，ACM
-CCSの中からSentenceTransformersのall-MiniLM-L6-v2のモデルで計算したTensor同士のコサイン類似度の高いものtop
-1を出力します．</li>
-</ul>
-<pre class="sparql"><code>select ?id ?keyword ?acmlabel where {
-    ?id &lt;http://www.edutella.org/bibtex#acmKeywordSimilarity&gt; ?o.
-    ?o &lt;http://www.edutella.org/bibtex#keyword&gt; ?keyword;
-       &lt;http://www.edutella.org/bibtex#top1&gt; ?acmid.
-    ?acmid &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ?acmlabel.
-}</code></pre>
-<h2 id="謝辞">謝辞</h2>
-<p><a href="https://arxiv.org/abs/1908.10084">Sentence-BERT: Sentence
-Embeddings using Siamese BERT-Networks</a>:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">@inproceedings</span>{<span class="ot">reimers</span>-<span class="ot">2019</span>-<span class="ot">sentence</span>-<span class="ot">bert</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span> = &quot;<span class="st">Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks</span>&quot;,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">author</span> = &quot;<span class="st">Reimers, Nils and Gurevych, Iryna</span>&quot;,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">booktitle</span> = &quot;<span class="st">Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing</span>&quot;,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">month</span> = &quot;<span class="st">11</span>&quot;,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span> = &quot;<span class="st">2019</span>&quot;,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">publisher</span> = &quot;<span class="st">Association for Computational Linguistics</span>&quot;,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">url</span> = &quot;<span class="st">https://arxiv.org/abs/1908.10084</span>&quot;,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><a href="https://dl.acm.org/ccs">ACM Computing Classification
-System</a></p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> bibtex2rdf.jar sample.bib sample.rdf</span></code></pre></div>
+<p>これだと，生成されるファイルの文字コードが，<code>ISO-8859-1</code>になってしまうので，<code>-enc UTF-8</code>を付けないと日本語の扱いで困ったことが起こるかもしれません．<br />
+<code>-baseuri</code>オプションでbaseuriを設定可能です．加えて，<code>-schema</code>オプションで変換ルールを変更可能です．BibTexファイル内のオプショナルな情報はデフォルトではRDFに変換されないので，変換ルールを自分で設定する必要があります．私の場合では，doiをRDFに含めたかったので<a
+href="https://github.com/s246wv/ISARC-bibtex-rdf/blob/main/config.txt">コチラの設定ファイル</a>を用意しました．
+オプション込みの例を下記に示します．</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> bibtex2rdf.jar <span class="at">-schema</span> config.txt <span class="at">-baseuri</span> <span class="st">&quot;https://doi.org/&quot;</span> <span class="at">-enc</span> UTF-8 <span class="pp">[</span><span class="ss">bibtex_file</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">output_rdf_file</span><span class="pp">]</span></span></code></pre></div>
+<p>以上です．</p>
 <h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
 pageへ戻る</a></h2>
             </div>
