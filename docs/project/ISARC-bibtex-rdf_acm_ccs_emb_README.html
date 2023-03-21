@@ -1,0 +1,211 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHNT2JS6H2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EHNT2JS6H2');
+    </script>
+  <meta name="author" content="s246wv" />
+  <title>ACM CCSを紐づける</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title">ACM CCSを紐づける</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">s246wv</p></li>
+                            </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <h1 id="acm-ccsを紐づける">ACM CCSを紐づける</h1>
+<h2 id="概要">概要</h2>
+<p>本作品は、ISARC bibtexRDFのキーワードに対してACM Computing
+Classification System (ACM
+CCS)の語を対応づけるためのスクリプト及び生成されたrdfファイルです。</p>
+<p>ISARC
+bibtexRDFでは、従来のbibtex2rdfで扱われていなかったキーワード情報をrdfファイルに付加する方法を示しました。しかし、キーワードは著者らが自由に記載できるため、文字列一致で文献検索に利用する場合、類似語であるにも関わらず検索結果から漏れる可能性があります。加えて、計算機科学分野に慣れ親しんだものが他分野の文献を検索する際に、適切なキーワードを選択できない可能性があります。
+本作品では、その課題を解決するために、ACM
+CCSとの類似度を計算し、キーワードとの関連付けを行いました。具体的には、各キーワードをSentence-BERTを用いてベクトル空間に埋め込み、キーワード間のコサイン類似度を計算します。類似度をランキングし、トップ5までをrdfファイルに付加します。</p>
+<p>本作品により、ACM
+CCSに反映された計算機科学の知見を利用して、計算機科学と他分野を横断するような分野の文献検索を容易にするLODを作成することができます。</p>
+<h2 id="必要なもの">必要なもの</h2>
+<p><code>../requirements.txt</code>に書いているpythonのパッケージたち<br />
+keywordが含まれたttlファイル<br />
+<code>retrieveKeyword.rq</code>: このフォルダに入ってます．<br />
+<code>acm_ccs2012-1626988337597.xml</code>: このフォルダに入ってます．<a
+href="https://dl.acm.org/pb-assets/dl_ccs/acm_ccs2012-1626988337597.xml">こちら</a>から頂きました．<br />
+<code>acm_ccs_emb.json</code>:
+このフォルダに入ってます．<code>embed4AcmCcs.py</code>を動かしても得られます．</p>
+<h2 id="使い方">使い方</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./runAll.sh</span> hoge.ttl retrieveKeyword.rq</span></code></pre></div>
+<ul>
+<li><code>hoge.ttl</code>はkeywordsが含まれたものとしてください．</li>
+<li>個別のpythonスクリプトの説明はおいおい整備します．</li>
+</ul>
+<h2 id="できたもの">できたもの</h2>
+<ul>
+<li>例えば，<a
+href="https://github.com/s246wv/ISARC-bibtex-rdf/blob/main/isarc/2022/isarc2022withACMCSS.bib.ttl">isarc2022withACMCSS.bib.ttl</a></li>
+<li>下記のSPARQLクエリでキーワードに対して，ACM
+CCSの中からSentenceTransformersのall-MiniLM-L6-v2のモデルで計算したTensor同士のコサイン類似度の高いものtop
+1を出力します．</li>
+</ul>
+<pre class="sparql"><code>select ?id ?keyword ?acmlabel where {
+    ?id &lt;http://www.edutella.org/bibtex#acmKeywordSimilarity&gt; ?o.
+    ?o &lt;http://www.edutella.org/bibtex#keyword&gt; ?keyword;
+       &lt;http://www.edutella.org/bibtex#top1&gt; ?acmid.
+    ?acmid &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ?acmlabel.
+}</code></pre>
+<h2 id="寸劇">寸劇</h2>
+<figure>
+<img src="./bibtex2rdfWacmccs.gif" alt="寸劇" />
+<figcaption aria-hidden="true">寸劇</figcaption>
+</figure>
+<h2 id="謝辞">謝辞</h2>
+<p><a href="https://arxiv.org/abs/1908.10084">Sentence-BERT: Sentence
+Embeddings using Siamese BERT-Networks</a>:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">@inproceedings</span>{<span class="ot">reimers</span>-<span class="ot">2019</span>-<span class="ot">sentence</span>-<span class="ot">bert</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span> = &quot;<span class="st">Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks</span>&quot;,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">author</span> = &quot;<span class="st">Reimers, Nils and Gurevych, Iryna</span>&quot;,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">booktitle</span> = &quot;<span class="st">Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing</span>&quot;,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">month</span> = &quot;<span class="st">11</span>&quot;,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span> = &quot;<span class="st">2019</span>&quot;,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">publisher</span> = &quot;<span class="st">Association for Computational Linguistics</span>&quot;,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">url</span> = &quot;<span class="st">https://arxiv.org/abs/1908.10084</span>&quot;,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><a href="https://dl.acm.org/ccs">ACM Computing Classification
+System</a></p>
+<h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
+pageへ戻る</a></h2>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
