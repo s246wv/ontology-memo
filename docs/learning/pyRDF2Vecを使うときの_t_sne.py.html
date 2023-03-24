@@ -1,0 +1,1320 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHNT2JS6H2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EHNT2JS6H2');
+    </script>
+  <meta name="author" content="s246wv" />
+  <title>pyRDF2Vecを使うときの_t_sne.py</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title">pyRDF2Vecを使うときの_t_sne.py</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">s246wv</p></li>
+                            </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <h1
+id="pyrdf2vecを使うときの_t_sne.py">pyRDF2Vecを使うときの_t_sne.py</h1>
+<p><a
+href="https://github.com/IBCNServices/pyRDF2Vec/issues/136">sklearn/manifold/_t_sne.py:
+line 792 X.shape[0] causes AttributeError #136</a>
+こちらのIssueにあげられているお話です．<br />
+Entity数が22を下回るユースケースはまだないので，Part
+2の方は解決してません．</p>
+<p>828行目と848行目の<code>X.shape[0]</code>を<code>len(X)</code>に置換します．</p>
+<p>環境を作り直す度に書き換える箇所を忘れるので，備忘録として下記に書き換えたコードを置いておきます．<br />
+開くと1,000行以上のコードが展開されるのでご注意ください．</p>
+<details close>
+<summary>
+_t_sne.py
+</summary>
+<div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Alexander Fabisch  -- &lt;afabisch@informatik.uni-bremen.de&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Christopher Moody &lt;chrisemoody@gmail.com&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Nick Travers &lt;nickt@squareup.com&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># License: BSD 3 clause (C) 2014</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the exact and Barnes-Hut t-SNE implementation. There are other</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># modifications of the algorithm:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># * Fast Optimization for t-SNE:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   https://cseweb.ucsd.edu/~lvdmaaten/workshops/nips2010/papers/vandermaaten.pdf</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> linalg</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> pdist</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> squareform</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.sparse <span class="im">import</span> csr_matrix, issparse</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numbers <span class="im">import</span> Integral, Real</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..neighbors <span class="im">import</span> NearestNeighbors</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..base <span class="im">import</span> BaseEstimator</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..utils <span class="im">import</span> check_random_state</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..utils._openmp_helpers <span class="im">import</span> _openmp_effective_n_threads</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..utils.validation <span class="im">import</span> check_non_negative</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..utils._param_validation <span class="im">import</span> Interval, StrOptions, Hidden</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..decomposition <span class="im">import</span> PCA</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..metrics.pairwise <span class="im">import</span> pairwise_distances, _VALID_METRICS</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># mypy error: Module &#39;sklearn.manifold&#39; has no attribute &#39;_utils&#39;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> _utils  <span class="co"># type: ignore</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># mypy error: Module &#39;sklearn.manifold&#39; has no attribute &#39;_barnes_hut_tsne&#39;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> _barnes_hut_tsne  <span class="co"># type: ignore</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>MACHINE_EPSILON <span class="op">=</span> np.finfo(np.double).eps</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _joint_probabilities(distances, desired_perplexity, verbose):</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Compute joint probabilities p_ij from distances.</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">    distances : ndarray of shape (n_samples * (n_samples-1) / 2,)</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co">        Distances of samples are stored as condensed matrices, i.e.</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co">        we omit the diagonal and duplicate entries and store everything</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co">        in a one-dimensional array.</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co">    desired_perplexity : float</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co">        Desired perplexity of the joint probability distributions.</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co">    verbose : int</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co">        Verbosity level.</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co">    P : ndarray of shape (n_samples * (n_samples-1) / 2,)</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">        Condensed joint probability matrix.</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute conditional probabilities such that they approximately match</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the desired perplexity</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    distances <span class="op">=</span> distances.astype(np.float32, copy<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    conditional_P <span class="op">=</span> _utils._binary_search_perplexity(</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        distances, desired_perplexity, verbose</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span> conditional_P <span class="op">+</span> conditional_P.T</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    sum_P <span class="op">=</span> np.maximum(np.<span class="bu">sum</span>(P), MACHINE_EPSILON)</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span> np.maximum(squareform(P) <span class="op">/</span> sum_P, MACHINE_EPSILON)</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> P</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _joint_probabilities_nn(distances, desired_perplexity, verbose):</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Compute joint probabilities p_ij from distances using just nearest</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co">    neighbors.</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co">    This method is approximately equal to _joint_probabilities. The latter</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co">    is O(N), but limiting the joint probability to nearest neighbors improves</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co">    this substantially to O(uN).</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co">    distances : sparse matrix of shape (n_samples, n_samples)</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">        Distances of samples to its n_neighbors nearest neighbors. All other</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co">        distances are left to zero (and are not materialized in memory).</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="co">        Matrix should be of CSR format.</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co">    desired_perplexity : float</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="co">        Desired perplexity of the joint probability distributions.</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="co">    verbose : int</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co">        Verbosity level.</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co">    P : sparse matrix of shape (n_samples, n_samples)</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="co">        Condensed joint probability matrix with only nearest neighbors. Matrix</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="co">        will be of CSR format.</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>    t0 <span class="op">=</span> time()</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute conditional probabilities such that they approximately match</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the desired perplexity</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>    distances.sort_indices()</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>    n_samples <span class="op">=</span> distances.shape[<span class="dv">0</span>]</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>    distances_data <span class="op">=</span> distances.data.reshape(n_samples, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>    distances_data <span class="op">=</span> distances_data.astype(np.float32, copy<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>    conditional_P <span class="op">=</span> _utils._binary_search_perplexity(</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>        distances_data, desired_perplexity, verbose</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> np.<span class="bu">all</span>(np.isfinite(conditional_P)), <span class="st">&quot;All probabilities should be finite&quot;</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Symmetrize the joint probability distribution using sparse operations</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span> csr_matrix(</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>        (conditional_P.ravel(), distances.indices, distances.indptr),</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>        shape<span class="op">=</span>(n_samples, n_samples),</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span> P <span class="op">+</span> P.T</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Normalize the joint probability distribution</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>    sum_P <span class="op">=</span> np.maximum(P.<span class="bu">sum</span>(), MACHINE_EPSILON)</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>    P <span class="op">/=</span> sum_P</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> np.<span class="bu">all</span>(np.<span class="bu">abs</span>(P.data) <span class="op">&lt;=</span> <span class="fl">1.0</span>)</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> verbose <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>        duration <span class="op">=</span> time() <span class="op">-</span> t0</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;[t-SNE] Computed conditional probabilities in </span><span class="sc">{:.3f}</span><span class="st">s&quot;</span>.<span class="bu">format</span>(duration))</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> P</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _kl_divergence(</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>    params,</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>    P,</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>    degrees_of_freedom,</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>    n_samples,</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>    n_components,</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>    skip_num_points<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>    compute_error<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;t-SNE objective function: gradient of the KL divergence</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="co">    of p_ijs and q_ijs and the absolute error.</span></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="co">    params : ndarray of shape (n_params,)</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="co">        Unraveled embedding.</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="co">    P : ndarray of shape (n_samples * (n_samples-1) / 2,)</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="co">        Condensed joint probability matrix.</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="co">    degrees_of_freedom : int</span></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="co">        Degrees of freedom of the Student&#39;s-t distribution.</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="co">    n_samples : int</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="co">        Number of samples.</span></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="co">    n_components : int</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="co">        Dimension of the embedded space.</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="co">    skip_num_points : int, default=0</span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="co">        This does not compute the gradient for points with indices below</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="co">        `skip_num_points`. This is useful when computing transforms of new</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="co">        data where you&#39;d like to keep the old data fixed.</span></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="co">    compute_error: bool, default=True</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="co">        If False, the kl_divergence is not computed and returns NaN.</span></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="co">    kl_divergence : float</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="co">        Kullback-Leibler divergence of p_ij and q_ij.</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="co">    grad : ndarray of shape (n_params,)</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="co">        Unraveled gradient of the Kullback-Leibler divergence with respect to</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="co">        the embedding.</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>    X_embedded <span class="op">=</span> params.reshape(n_samples, n_components)</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Q is a heavy-tailed distribution: Student&#39;s t-distribution</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">=</span> pdist(X_embedded, <span class="st">&quot;sqeuclidean&quot;</span>)</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">/=</span> degrees_of_freedom</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">+=</span> <span class="fl">1.0</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">**=</span> (degrees_of_freedom <span class="op">+</span> <span class="fl">1.0</span>) <span class="op">/</span> <span class="op">-</span><span class="fl">2.0</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> np.maximum(dist <span class="op">/</span> (<span class="fl">2.0</span> <span class="op">*</span> np.<span class="bu">sum</span>(dist)), MACHINE_EPSILON)</span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Optimization trick below: np.dot(x, y) is faster than</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>    <span class="co"># np.sum(x * y) because it calls BLAS</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Objective: C (Kullback-Leibler divergence of P and Q)</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> compute_error:</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>        kl_divergence <span class="op">=</span> <span class="fl">2.0</span> <span class="op">*</span> np.dot(P, np.log(np.maximum(P, MACHINE_EPSILON) <span class="op">/</span> Q))</span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>        kl_divergence <span class="op">=</span> np.nan</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Gradient: dC/dY</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pdist always returns double precision distances. Thus we need to take</span></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">=</span> np.ndarray((n_samples, n_components), dtype<span class="op">=</span>params.dtype)</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>    PQd <span class="op">=</span> squareform((P <span class="op">-</span> Q) <span class="op">*</span> dist)</span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(skip_num_points, n_samples):</span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>        grad[i] <span class="op">=</span> np.dot(np.ravel(PQd[i], order<span class="op">=</span><span class="st">&quot;K&quot;</span>), X_embedded[i] <span class="op">-</span> X_embedded)</span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">=</span> grad.ravel()</span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="fl">2.0</span> <span class="op">*</span> (degrees_of_freedom <span class="op">+</span> <span class="fl">1.0</span>) <span class="op">/</span> degrees_of_freedom</span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">*=</span> c</span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> kl_divergence, grad</span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _kl_divergence_bh(</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>    params,</span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>    P,</span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>    degrees_of_freedom,</span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>    n_samples,</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>    n_components,</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>    angle<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>    skip_num_points<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>    compute_error<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>    num_threads<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;t-SNE objective function: KL divergence of p_ijs and q_ijs.</span></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="co">    Uses Barnes-Hut tree methods to calculate the gradient that</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="co">    runs in O(NlogN) instead of O(N^2).</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="co">    params : ndarray of shape (n_params,)</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="co">        Unraveled embedding.</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="co">    P : sparse matrix of shape (n_samples, n_sample)</span></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="co">        Sparse approximate joint probability matrix, computed only for the</span></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="co">        k nearest-neighbors and symmetrized. Matrix should be of CSR format.</span></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="co">    degrees_of_freedom : int</span></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="co">        Degrees of freedom of the Student&#39;s-t distribution.</span></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="co">    n_samples : int</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="co">        Number of samples.</span></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a><span class="co">    n_components : int</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a><span class="co">        Dimension of the embedded space.</span></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a><span class="co">    angle : float, default=0.5</span></span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="co">        This is the trade-off between speed and accuracy for Barnes-Hut T-SNE.</span></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="co">        &#39;angle&#39; is the angular size (referred to as theta in [3]) of a distant</span></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="co">        node as measured from a point. If this size is below &#39;angle&#39; then it is</span></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a><span class="co">        used as a summary node of all points contained within it.</span></span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="co">        This method is not very sensitive to changes in this parameter</span></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="co">        in the range of 0.2 - 0.8. Angle less than 0.2 has quickly increasing</span></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="co">        computation time and angle greater 0.8 has quickly increasing error.</span></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="co">    skip_num_points : int, default=0</span></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="co">        This does not compute the gradient for points with indices below</span></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="co">        `skip_num_points`. This is useful when computing transforms of new</span></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="co">        data where you&#39;d like to keep the old data fixed.</span></span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="co">    verbose : int, default=False</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="co">        Verbosity level.</span></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="co">    compute_error: bool, default=True</span></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="co">        If False, the kl_divergence is not computed and returns NaN.</span></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="co">    num_threads : int, default=1</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="co">        Number of threads used to compute the gradient. This is set here to</span></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="co">        avoid calling _openmp_effective_n_threads for each gradient step.</span></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a><span class="co">    kl_divergence : float</span></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="co">        Kullback-Leibler divergence of p_ij and q_ij.</span></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a><span class="co">    grad : ndarray of shape (n_params,)</span></span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a><span class="co">        Unraveled gradient of the Kullback-Leibler divergence with respect to</span></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="co">        the embedding.</span></span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> params.astype(np.float32, copy<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>    X_embedded <span class="op">=</span> params.reshape(n_samples, n_components)</span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>    val_P <span class="op">=</span> P.data.astype(np.float32, copy<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>    neighbors <span class="op">=</span> P.indices.astype(np.int64, copy<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>    indptr <span class="op">=</span> P.indptr.astype(np.int64, copy<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">=</span> np.zeros(X_embedded.shape, dtype<span class="op">=</span>np.float32)</span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a>    error <span class="op">=</span> _barnes_hut_tsne.gradient(</span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>        val_P,</span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a>        X_embedded,</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>        neighbors,</span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a>        indptr,</span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a>        grad,</span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>        angle,</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a>        n_components,</span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>        verbose,</span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a>        dof<span class="op">=</span>degrees_of_freedom,</span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a>        compute_error<span class="op">=</span>compute_error,</span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a>        num_threads<span class="op">=</span>num_threads,</span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="fl">2.0</span> <span class="op">*</span> (degrees_of_freedom <span class="op">+</span> <span class="fl">1.0</span>) <span class="op">/</span> degrees_of_freedom</span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">=</span> grad.ravel()</span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">*=</span> c</span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> error, grad</span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _gradient_descent(</span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>    objective,</span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a>    p0,</span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>    it,</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>    n_iter,</span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a>    n_iter_check<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a>    n_iter_without_progress<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a>    momentum<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a>    learning_rate<span class="op">=</span><span class="fl">200.0</span>,</span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a>    min_gain<span class="op">=</span><span class="fl">0.01</span>,</span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a>    min_grad_norm<span class="op">=</span><span class="fl">1e-7</span>,</span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a>    args<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a>    kwargs<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Batch gradient descent with momentum and individual gains.</span></span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a><span class="co">    objective : callable</span></span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a><span class="co">        Should return a tuple of cost and gradient for a given parameter</span></span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a><span class="co">        vector. When expensive to compute, the cost can optionally</span></span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a><span class="co">        be None and can be computed every n_iter_check steps using</span></span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a><span class="co">        the objective_error function.</span></span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a><span class="co">    p0 : array-like of shape (n_params,)</span></span>
+<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a><span class="co">        Initial parameter vector.</span></span>
+<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a><span class="co">    it : int</span></span>
+<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a><span class="co">        Current number of iterations (this function will be called more than</span></span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a><span class="co">        once during the optimization).</span></span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a><span class="co">    n_iter : int</span></span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a><span class="co">        Maximum number of gradient descent iterations.</span></span>
+<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a><span class="co">    n_iter_check : int, default=1</span></span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a><span class="co">        Number of iterations before evaluating the global error. If the error</span></span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a><span class="co">        is sufficiently low, we abort the optimization.</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a><span class="co">    n_iter_without_progress : int, default=300</span></span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a><span class="co">        Maximum number of iterations without progress before we abort the</span></span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a><span class="co">        optimization.</span></span>
+<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a><span class="co">    momentum : float within (0.0, 1.0), default=0.8</span></span>
+<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a><span class="co">        The momentum generates a weight for previous gradients that decays</span></span>
+<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a><span class="co">        exponentially.</span></span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a><span class="co">    learning_rate : float, default=200.0</span></span>
+<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a><span class="co">        The learning rate for t-SNE is usually in the range [10.0, 1000.0]. If</span></span>
+<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a><span class="co">        the learning rate is too high, the data may look like a &#39;ball&#39; with any</span></span>
+<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a><span class="co">        point approximately equidistant from its nearest neighbours. If the</span></span>
+<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a><span class="co">        learning rate is too low, most points may look compressed in a dense</span></span>
+<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a><span class="co">        cloud with few outliers.</span></span>
+<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a><span class="co">    min_gain : float, default=0.01</span></span>
+<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a><span class="co">        Minimum individual gain for each parameter.</span></span>
+<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a><span class="co">    min_grad_norm : float, default=1e-7</span></span>
+<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a><span class="co">        If the gradient norm is below this threshold, the optimization will</span></span>
+<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a><span class="co">        be aborted.</span></span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a><span class="co">    verbose : int, default=0</span></span>
+<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a><span class="co">        Verbosity level.</span></span>
+<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a><span class="co">    args : sequence, default=None</span></span>
+<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a><span class="co">        Arguments to pass to objective function.</span></span>
+<span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a><span class="co">    kwargs : dict, default=None</span></span>
+<span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a><span class="co">        Keyword arguments to pass to objective function.</span></span>
+<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a><span class="co">    p : ndarray of shape (n_params,)</span></span>
+<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a><span class="co">        Optimum parameters.</span></span>
+<span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a><span class="co">    error : float</span></span>
+<span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a><span class="co">        Optimum.</span></span>
+<span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a><span class="co">    i : int</span></span>
+<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a><span class="co">        Last iteration.</span></span>
+<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> args <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a>        args <span class="op">=</span> []</span>
+<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> kwargs <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a>        kwargs <span class="op">=</span> {}</span>
+<span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p0.copy().ravel()</span>
+<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a>    update <span class="op">=</span> np.zeros_like(p)</span>
+<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a>    gains <span class="op">=</span> np.ones_like(p)</span>
+<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a>    error <span class="op">=</span> np.finfo(<span class="bu">float</span>).<span class="bu">max</span></span>
+<span id="cb1-390"><a href="#cb1-390" aria-hidden="true" tabindex="-1"></a>    best_error <span class="op">=</span> np.finfo(<span class="bu">float</span>).<span class="bu">max</span></span>
+<span id="cb1-391"><a href="#cb1-391" aria-hidden="true" tabindex="-1"></a>    best_iter <span class="op">=</span> i <span class="op">=</span> it</span>
+<span id="cb1-392"><a href="#cb1-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-393"><a href="#cb1-393" aria-hidden="true" tabindex="-1"></a>    tic <span class="op">=</span> time()</span>
+<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(it, n_iter):</span>
+<span id="cb1-395"><a href="#cb1-395" aria-hidden="true" tabindex="-1"></a>        check_convergence <span class="op">=</span> (i <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> n_iter_check <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a>        <span class="co"># only compute the error when needed</span></span>
+<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a>        kwargs[<span class="st">&quot;compute_error&quot;</span>] <span class="op">=</span> check_convergence <span class="kw">or</span> i <span class="op">==</span> n_iter <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a>        error, grad <span class="op">=</span> objective(p, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a>        inc <span class="op">=</span> update <span class="op">*</span> grad <span class="op">&lt;</span> <span class="fl">0.0</span></span>
+<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a>        dec <span class="op">=</span> np.invert(inc)</span>
+<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a>        gains[inc] <span class="op">+=</span> <span class="fl">0.2</span></span>
+<span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a>        gains[dec] <span class="op">*=</span> <span class="fl">0.8</span></span>
+<span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a>        np.clip(gains, min_gain, np.inf, out<span class="op">=</span>gains)</span>
+<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a>        grad <span class="op">*=</span> gains</span>
+<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>        update <span class="op">=</span> momentum <span class="op">*</span> update <span class="op">-</span> learning_rate <span class="op">*</span> grad</span>
+<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a>        p <span class="op">+=</span> update</span>
+<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> check_convergence:</span>
+<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a>            toc <span class="op">=</span> time()</span>
+<span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a>            duration <span class="op">=</span> toc <span class="op">-</span> tic</span>
+<span id="cb1-413"><a href="#cb1-413" aria-hidden="true" tabindex="-1"></a>            tic <span class="op">=</span> toc</span>
+<span id="cb1-414"><a href="#cb1-414" aria-hidden="true" tabindex="-1"></a>            grad_norm <span class="op">=</span> linalg.norm(grad)</span>
+<span id="cb1-415"><a href="#cb1-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> verbose <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(</span>
+<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;[t-SNE] Iteration </span><span class="sc">%d</span><span class="st">: error = </span><span class="sc">%.7f</span><span class="st">,&quot;</span></span>
+<span id="cb1-419"><a href="#cb1-419" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot; gradient norm = </span><span class="sc">%.7f</span><span class="st">&quot;</span></span>
+<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot; (</span><span class="sc">%s</span><span class="st"> iterations in </span><span class="sc">%0.3f</span><span class="st">s)&quot;</span></span>
+<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a>                    <span class="op">%</span> (i <span class="op">+</span> <span class="dv">1</span>, error, grad_norm, n_iter_check, duration)</span>
+<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-424"><a href="#cb1-424" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> error <span class="op">&lt;</span> best_error:</span>
+<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a>                best_error <span class="op">=</span> error</span>
+<span id="cb1-426"><a href="#cb1-426" aria-hidden="true" tabindex="-1"></a>                best_iter <span class="op">=</span> i</span>
+<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> i <span class="op">-</span> best_iter <span class="op">&gt;</span> n_iter_without_progress:</span>
+<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> verbose <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(</span>
+<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;[t-SNE] Iteration </span><span class="sc">%d</span><span class="st">: did not make any progress &quot;</span></span>
+<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;during the last </span><span class="sc">%d</span><span class="st"> episodes. Finished.&quot;</span></span>
+<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a>                        <span class="op">%</span> (i <span class="op">+</span> <span class="dv">1</span>, n_iter_without_progress)</span>
+<span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> grad_norm <span class="op">&lt;=</span> min_grad_norm:</span>
+<span id="cb1-436"><a href="#cb1-436" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> verbose <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(</span>
+<span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;[t-SNE] Iteration </span><span class="sc">%d</span><span class="st">: gradient norm </span><span class="sc">%f</span><span class="st">. Finished.&quot;</span></span>
+<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a>                        <span class="op">%</span> (i <span class="op">+</span> <span class="dv">1</span>, grad_norm)</span>
+<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb1-442"><a href="#cb1-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-443"><a href="#cb1-443" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p, error, i</span>
+<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trustworthiness(X, X_embedded, <span class="op">*</span>, n_neighbors<span class="op">=</span><span class="dv">5</span>, metric<span class="op">=</span><span class="st">&quot;euclidean&quot;</span>):</span>
+<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a>    <span class="co">r&quot;&quot;&quot;Indicate to what extent the local structure is retained.</span></span>
+<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-449"><a href="#cb1-449" aria-hidden="true" tabindex="-1"></a><span class="co">    The trustworthiness is within [0, 1]. It is defined as</span></span>
+<span id="cb1-450"><a href="#cb1-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-451"><a href="#cb1-451" aria-hidden="true" tabindex="-1"></a><span class="co">    .. math::</span></span>
+<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a><span class="co">        T(k) = 1 - </span><span class="ch">\f</span><span class="co">rac{2}{nk (2n - 3k - 1)} \sum^n_{i=1}</span></span>
+<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a><span class="co">            \sum_{j \in \mathcal{N}_{i}^{k}} \max(0, (r(i, j) - k))</span></span>
+<span id="cb1-455"><a href="#cb1-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a><span class="co">    where for each sample i, :math:`\mathcal{N}_{i}^{k}` are its k nearest</span></span>
+<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a><span class="co">    neighbors in the output space, and every sample j is its :math:`r(i, j)`-th</span></span>
+<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a><span class="co">    nearest neighbor in the input space. In other words, any unexpected nearest</span></span>
+<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a><span class="co">    neighbors in the output space are penalised in proportion to their rank in</span></span>
+<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a><span class="co">    the input space.</span></span>
+<span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-463"><a href="#cb1-463" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a><span class="co">    X : {array-like, sparse matrix} of shape (n_samples, n_features) or </span><span class="ch">\</span></span>
+<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a><span class="co">        (n_samples, n_samples)</span></span>
+<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a><span class="co">        If the metric is &#39;precomputed&#39; X must be a square distance</span></span>
+<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a><span class="co">        matrix. Otherwise it contains a sample per row.</span></span>
+<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a><span class="co">    X_embedded : {array-like, sparse matrix} of shape (n_samples, n_components)</span></span>
+<span id="cb1-470"><a href="#cb1-470" aria-hidden="true" tabindex="-1"></a><span class="co">        Embedding of the training data in low-dimensional space.</span></span>
+<span id="cb1-471"><a href="#cb1-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-472"><a href="#cb1-472" aria-hidden="true" tabindex="-1"></a><span class="co">    n_neighbors : int, default=5</span></span>
+<span id="cb1-473"><a href="#cb1-473" aria-hidden="true" tabindex="-1"></a><span class="co">        The number of neighbors that will be considered. Should be fewer than</span></span>
+<span id="cb1-474"><a href="#cb1-474" aria-hidden="true" tabindex="-1"></a><span class="co">        `n_samples / 2` to ensure the trustworthiness to lies within [0, 1], as</span></span>
+<span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a><span class="co">        mentioned in [1]_. An error will be raised otherwise.</span></span>
+<span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a><span class="co">    metric : str or callable, default=&#39;euclidean&#39;</span></span>
+<span id="cb1-478"><a href="#cb1-478" aria-hidden="true" tabindex="-1"></a><span class="co">        Which metric to use for computing pairwise distances between samples</span></span>
+<span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a><span class="co">        from the original input space. If metric is &#39;precomputed&#39;, X must be a</span></span>
+<span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a><span class="co">        matrix of pairwise distances or squared distances. Otherwise, for a list</span></span>
+<span id="cb1-481"><a href="#cb1-481" aria-hidden="true" tabindex="-1"></a><span class="co">        of available metrics, see the documentation of argument metric in</span></span>
+<span id="cb1-482"><a href="#cb1-482" aria-hidden="true" tabindex="-1"></a><span class="co">        `sklearn.pairwise.pairwise_distances` and metrics listed in</span></span>
+<span id="cb1-483"><a href="#cb1-483" aria-hidden="true" tabindex="-1"></a><span class="co">        `sklearn.metrics.pairwise.PAIRWISE_DISTANCE_FUNCTIONS`. Note that the</span></span>
+<span id="cb1-484"><a href="#cb1-484" aria-hidden="true" tabindex="-1"></a><span class="co">        &quot;cosine&quot; metric uses :func:`~sklearn.metrics.pairwise.cosine_distances`.</span></span>
+<span id="cb1-485"><a href="#cb1-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-486"><a href="#cb1-486" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 0.20</span></span>
+<span id="cb1-487"><a href="#cb1-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-488"><a href="#cb1-488" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb1-489"><a href="#cb1-489" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb1-490"><a href="#cb1-490" aria-hidden="true" tabindex="-1"></a><span class="co">    trustworthiness : float</span></span>
+<span id="cb1-491"><a href="#cb1-491" aria-hidden="true" tabindex="-1"></a><span class="co">        Trustworthiness of the low-dimensional embedding.</span></span>
+<span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a><span class="co">    References</span></span>
+<span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a><span class="co">    .. [1] Jarkko Venna and Samuel Kaski. 2001. Neighborhood</span></span>
+<span id="cb1-496"><a href="#cb1-496" aria-hidden="true" tabindex="-1"></a><span class="co">           Preservation in Nonlinear Projection Methods: An Experimental Study.</span></span>
+<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a><span class="co">           In Proceedings of the International Conference on Artificial Neural Networks</span></span>
+<span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a><span class="co">           (ICANN &#39;01). Springer-Verlag, Berlin, Heidelberg, 485-491.</span></span>
+<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a><span class="co">    .. [2] Laurens van der Maaten. Learning a Parametric Embedding by Preserving</span></span>
+<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a><span class="co">           Local Structure. Proceedings of the Twelth International Conference on</span></span>
+<span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a><span class="co">           Artificial Intelligence and Statistics, PMLR 5:384-391, 2009.</span></span>
+<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a>    n_samples <span class="op">=</span> X.shape[<span class="dv">0</span>]</span>
+<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n_neighbors <span class="op">&gt;=</span> n_samples <span class="op">/</span> <span class="dv">2</span>:</span>
+<span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f&quot;n_neighbors (</span><span class="sc">{</span>n_neighbors<span class="sc">}</span><span class="ss">) should be less than n_samples / 2&quot;</span></span>
+<span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f&quot; (</span><span class="sc">{</span>n_samples <span class="op">/</span> <span class="dv">2</span><span class="sc">}</span><span class="ss">)&quot;</span></span>
+<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-510"><a href="#cb1-510" aria-hidden="true" tabindex="-1"></a>    dist_X <span class="op">=</span> pairwise_distances(X, metric<span class="op">=</span>metric)</span>
+<span id="cb1-511"><a href="#cb1-511" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> metric <span class="op">==</span> <span class="st">&quot;precomputed&quot;</span>:</span>
+<span id="cb1-512"><a href="#cb1-512" aria-hidden="true" tabindex="-1"></a>        dist_X <span class="op">=</span> dist_X.copy()</span>
+<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we set the diagonal to np.inf to exclude the points themselves from</span></span>
+<span id="cb1-514"><a href="#cb1-514" aria-hidden="true" tabindex="-1"></a>    <span class="co"># their own neighborhood</span></span>
+<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a>    np.fill_diagonal(dist_X, np.inf)</span>
+<span id="cb1-516"><a href="#cb1-516" aria-hidden="true" tabindex="-1"></a>    ind_X <span class="op">=</span> np.argsort(dist_X, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a>    <span class="co"># `ind_X[i]` is the index of sorted distances between i and other samples</span></span>
+<span id="cb1-518"><a href="#cb1-518" aria-hidden="true" tabindex="-1"></a>    ind_X_embedded <span class="op">=</span> (</span>
+<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a>        NearestNeighbors(n_neighbors<span class="op">=</span>n_neighbors)</span>
+<span id="cb1-520"><a href="#cb1-520" aria-hidden="true" tabindex="-1"></a>        .fit(X_embedded)</span>
+<span id="cb1-521"><a href="#cb1-521" aria-hidden="true" tabindex="-1"></a>        .kneighbors(return_distance<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-522"><a href="#cb1-522" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-523"><a href="#cb1-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-524"><a href="#cb1-524" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We build an inverted index of neighbors in the input space: For sample i,</span></span>
+<span id="cb1-525"><a href="#cb1-525" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we define `inverted_index[i]` as the inverted index of sorted distances:</span></span>
+<span id="cb1-526"><a href="#cb1-526" aria-hidden="true" tabindex="-1"></a>    <span class="co"># inverted_index[i][ind_X[i]] = np.arange(1, n_sample + 1)</span></span>
+<span id="cb1-527"><a href="#cb1-527" aria-hidden="true" tabindex="-1"></a>    inverted_index <span class="op">=</span> np.zeros((n_samples, n_samples), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb1-528"><a href="#cb1-528" aria-hidden="true" tabindex="-1"></a>    ordered_indices <span class="op">=</span> np.arange(n_samples <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-529"><a href="#cb1-529" aria-hidden="true" tabindex="-1"></a>    inverted_index[ordered_indices[:<span class="op">-</span><span class="dv">1</span>, np.newaxis], ind_X] <span class="op">=</span> ordered_indices[<span class="dv">1</span>:]</span>
+<span id="cb1-530"><a href="#cb1-530" aria-hidden="true" tabindex="-1"></a>    ranks <span class="op">=</span> (</span>
+<span id="cb1-531"><a href="#cb1-531" aria-hidden="true" tabindex="-1"></a>        inverted_index[ordered_indices[:<span class="op">-</span><span class="dv">1</span>, np.newaxis], ind_X_embedded] <span class="op">-</span> n_neighbors</span>
+<span id="cb1-532"><a href="#cb1-532" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-533"><a href="#cb1-533" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.<span class="bu">sum</span>(ranks[ranks <span class="op">&gt;</span> <span class="dv">0</span>])</span>
+<span id="cb1-534"><a href="#cb1-534" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> <span class="fl">1.0</span> <span class="op">-</span> t <span class="op">*</span> (</span>
+<span id="cb1-535"><a href="#cb1-535" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.0</span> <span class="op">/</span> (n_samples <span class="op">*</span> n_neighbors <span class="op">*</span> (<span class="fl">2.0</span> <span class="op">*</span> n_samples <span class="op">-</span> <span class="fl">3.0</span> <span class="op">*</span> n_neighbors <span class="op">-</span> <span class="fl">1.0</span>))</span>
+<span id="cb1-536"><a href="#cb1-536" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-537"><a href="#cb1-537" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t</span>
+<span id="cb1-538"><a href="#cb1-538" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-539"><a href="#cb1-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-540"><a href="#cb1-540" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TSNE(BaseEstimator):</span>
+<span id="cb1-541"><a href="#cb1-541" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;T-distributed Stochastic Neighbor Embedding.</span></span>
+<span id="cb1-542"><a href="#cb1-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-543"><a href="#cb1-543" aria-hidden="true" tabindex="-1"></a><span class="co">    t-SNE [1] is a tool to visualize high-dimensional data. It converts</span></span>
+<span id="cb1-544"><a href="#cb1-544" aria-hidden="true" tabindex="-1"></a><span class="co">    similarities between data points to joint probabilities and tries</span></span>
+<span id="cb1-545"><a href="#cb1-545" aria-hidden="true" tabindex="-1"></a><span class="co">    to minimize the Kullback-Leibler divergence between the joint</span></span>
+<span id="cb1-546"><a href="#cb1-546" aria-hidden="true" tabindex="-1"></a><span class="co">    probabilities of the low-dimensional embedding and the</span></span>
+<span id="cb1-547"><a href="#cb1-547" aria-hidden="true" tabindex="-1"></a><span class="co">    high-dimensional data. t-SNE has a cost function that is not convex,</span></span>
+<span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a><span class="co">    i.e. with different initializations we can get different results.</span></span>
+<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-550"><a href="#cb1-550" aria-hidden="true" tabindex="-1"></a><span class="co">    It is highly recommended to use another dimensionality reduction</span></span>
+<span id="cb1-551"><a href="#cb1-551" aria-hidden="true" tabindex="-1"></a><span class="co">    method (e.g. PCA for dense data or TruncatedSVD for sparse data)</span></span>
+<span id="cb1-552"><a href="#cb1-552" aria-hidden="true" tabindex="-1"></a><span class="co">    to reduce the number of dimensions to a reasonable amount (e.g. 50)</span></span>
+<span id="cb1-553"><a href="#cb1-553" aria-hidden="true" tabindex="-1"></a><span class="co">    if the number of features is very high. This will suppress some</span></span>
+<span id="cb1-554"><a href="#cb1-554" aria-hidden="true" tabindex="-1"></a><span class="co">    noise and speed up the computation of pairwise distances between</span></span>
+<span id="cb1-555"><a href="#cb1-555" aria-hidden="true" tabindex="-1"></a><span class="co">    samples. For more tips see Laurens van der Maaten&#39;s FAQ [2].</span></span>
+<span id="cb1-556"><a href="#cb1-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-557"><a href="#cb1-557" aria-hidden="true" tabindex="-1"></a><span class="co">    Read more in the :ref:`User Guide &lt;t_sne&gt;`.</span></span>
+<span id="cb1-558"><a href="#cb1-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-559"><a href="#cb1-559" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-560"><a href="#cb1-560" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-561"><a href="#cb1-561" aria-hidden="true" tabindex="-1"></a><span class="co">    n_components : int, default=2</span></span>
+<span id="cb1-562"><a href="#cb1-562" aria-hidden="true" tabindex="-1"></a><span class="co">        Dimension of the embedded space.</span></span>
+<span id="cb1-563"><a href="#cb1-563" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-564"><a href="#cb1-564" aria-hidden="true" tabindex="-1"></a><span class="co">    perplexity : float, default=30.0</span></span>
+<span id="cb1-565"><a href="#cb1-565" aria-hidden="true" tabindex="-1"></a><span class="co">        The perplexity is related to the number of nearest neighbors that</span></span>
+<span id="cb1-566"><a href="#cb1-566" aria-hidden="true" tabindex="-1"></a><span class="co">        is used in other manifold learning algorithms. Larger datasets</span></span>
+<span id="cb1-567"><a href="#cb1-567" aria-hidden="true" tabindex="-1"></a><span class="co">        usually require a larger perplexity. Consider selecting a value</span></span>
+<span id="cb1-568"><a href="#cb1-568" aria-hidden="true" tabindex="-1"></a><span class="co">        between 5 and 50. Different values can result in significantly</span></span>
+<span id="cb1-569"><a href="#cb1-569" aria-hidden="true" tabindex="-1"></a><span class="co">        different results. The perplexity must be less than the number</span></span>
+<span id="cb1-570"><a href="#cb1-570" aria-hidden="true" tabindex="-1"></a><span class="co">        of samples.</span></span>
+<span id="cb1-571"><a href="#cb1-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-572"><a href="#cb1-572" aria-hidden="true" tabindex="-1"></a><span class="co">    early_exaggeration : float, default=12.0</span></span>
+<span id="cb1-573"><a href="#cb1-573" aria-hidden="true" tabindex="-1"></a><span class="co">        Controls how tight natural clusters in the original space are in</span></span>
+<span id="cb1-574"><a href="#cb1-574" aria-hidden="true" tabindex="-1"></a><span class="co">        the embedded space and how much space will be between them. For</span></span>
+<span id="cb1-575"><a href="#cb1-575" aria-hidden="true" tabindex="-1"></a><span class="co">        larger values, the space between natural clusters will be larger</span></span>
+<span id="cb1-576"><a href="#cb1-576" aria-hidden="true" tabindex="-1"></a><span class="co">        in the embedded space. Again, the choice of this parameter is not</span></span>
+<span id="cb1-577"><a href="#cb1-577" aria-hidden="true" tabindex="-1"></a><span class="co">        very critical. If the cost function increases during initial</span></span>
+<span id="cb1-578"><a href="#cb1-578" aria-hidden="true" tabindex="-1"></a><span class="co">        optimization, the early exaggeration factor or the learning rate</span></span>
+<span id="cb1-579"><a href="#cb1-579" aria-hidden="true" tabindex="-1"></a><span class="co">        might be too high.</span></span>
+<span id="cb1-580"><a href="#cb1-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-581"><a href="#cb1-581" aria-hidden="true" tabindex="-1"></a><span class="co">    learning_rate : float or &quot;auto&quot;, default=&quot;auto&quot;</span></span>
+<span id="cb1-582"><a href="#cb1-582" aria-hidden="true" tabindex="-1"></a><span class="co">        The learning rate for t-SNE is usually in the range [10.0, 1000.0]. If</span></span>
+<span id="cb1-583"><a href="#cb1-583" aria-hidden="true" tabindex="-1"></a><span class="co">        the learning rate is too high, the data may look like a &#39;ball&#39; with any</span></span>
+<span id="cb1-584"><a href="#cb1-584" aria-hidden="true" tabindex="-1"></a><span class="co">        point approximately equidistant from its nearest neighbours. If the</span></span>
+<span id="cb1-585"><a href="#cb1-585" aria-hidden="true" tabindex="-1"></a><span class="co">        learning rate is too low, most points may look compressed in a dense</span></span>
+<span id="cb1-586"><a href="#cb1-586" aria-hidden="true" tabindex="-1"></a><span class="co">        cloud with few outliers. If the cost function gets stuck in a bad local</span></span>
+<span id="cb1-587"><a href="#cb1-587" aria-hidden="true" tabindex="-1"></a><span class="co">        minimum increasing the learning rate may help.</span></span>
+<span id="cb1-588"><a href="#cb1-588" aria-hidden="true" tabindex="-1"></a><span class="co">        Note that many other t-SNE implementations (bhtsne, FIt-SNE, openTSNE,</span></span>
+<span id="cb1-589"><a href="#cb1-589" aria-hidden="true" tabindex="-1"></a><span class="co">        etc.) use a definition of learning_rate that is 4 times smaller than</span></span>
+<span id="cb1-590"><a href="#cb1-590" aria-hidden="true" tabindex="-1"></a><span class="co">        ours. So our learning_rate=200 corresponds to learning_rate=800 in</span></span>
+<span id="cb1-591"><a href="#cb1-591" aria-hidden="true" tabindex="-1"></a><span class="co">        those other implementations. The &#39;auto&#39; option sets the learning_rate</span></span>
+<span id="cb1-592"><a href="#cb1-592" aria-hidden="true" tabindex="-1"></a><span class="co">        to `max(N / early_exaggeration / 4, 50)` where N is the sample size,</span></span>
+<span id="cb1-593"><a href="#cb1-593" aria-hidden="true" tabindex="-1"></a><span class="co">        following [4] and [5].</span></span>
+<span id="cb1-594"><a href="#cb1-594" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-595"><a href="#cb1-595" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionchanged:: 1.2</span></span>
+<span id="cb1-596"><a href="#cb1-596" aria-hidden="true" tabindex="-1"></a><span class="co">           The default value changed to `&quot;auto&quot;`.</span></span>
+<span id="cb1-597"><a href="#cb1-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-598"><a href="#cb1-598" aria-hidden="true" tabindex="-1"></a><span class="co">    n_iter : int, default=1000</span></span>
+<span id="cb1-599"><a href="#cb1-599" aria-hidden="true" tabindex="-1"></a><span class="co">        Maximum number of iterations for the optimization. Should be at</span></span>
+<span id="cb1-600"><a href="#cb1-600" aria-hidden="true" tabindex="-1"></a><span class="co">        least 250.</span></span>
+<span id="cb1-601"><a href="#cb1-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-602"><a href="#cb1-602" aria-hidden="true" tabindex="-1"></a><span class="co">    n_iter_without_progress : int, default=300</span></span>
+<span id="cb1-603"><a href="#cb1-603" aria-hidden="true" tabindex="-1"></a><span class="co">        Maximum number of iterations without progress before we abort the</span></span>
+<span id="cb1-604"><a href="#cb1-604" aria-hidden="true" tabindex="-1"></a><span class="co">        optimization, used after 250 initial iterations with early</span></span>
+<span id="cb1-605"><a href="#cb1-605" aria-hidden="true" tabindex="-1"></a><span class="co">        exaggeration. Note that progress is only checked every 50 iterations so</span></span>
+<span id="cb1-606"><a href="#cb1-606" aria-hidden="true" tabindex="-1"></a><span class="co">        this value is rounded to the next multiple of 50.</span></span>
+<span id="cb1-607"><a href="#cb1-607" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-608"><a href="#cb1-608" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 0.17</span></span>
+<span id="cb1-609"><a href="#cb1-609" aria-hidden="true" tabindex="-1"></a><span class="co">           parameter *n_iter_without_progress* to control stopping criteria.</span></span>
+<span id="cb1-610"><a href="#cb1-610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-611"><a href="#cb1-611" aria-hidden="true" tabindex="-1"></a><span class="co">    min_grad_norm : float, default=1e-7</span></span>
+<span id="cb1-612"><a href="#cb1-612" aria-hidden="true" tabindex="-1"></a><span class="co">        If the gradient norm is below this threshold, the optimization will</span></span>
+<span id="cb1-613"><a href="#cb1-613" aria-hidden="true" tabindex="-1"></a><span class="co">        be stopped.</span></span>
+<span id="cb1-614"><a href="#cb1-614" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-615"><a href="#cb1-615" aria-hidden="true" tabindex="-1"></a><span class="co">    metric : str or callable, default=&#39;euclidean&#39;</span></span>
+<span id="cb1-616"><a href="#cb1-616" aria-hidden="true" tabindex="-1"></a><span class="co">        The metric to use when calculating distance between instances in a</span></span>
+<span id="cb1-617"><a href="#cb1-617" aria-hidden="true" tabindex="-1"></a><span class="co">        feature array. If metric is a string, it must be one of the options</span></span>
+<span id="cb1-618"><a href="#cb1-618" aria-hidden="true" tabindex="-1"></a><span class="co">        allowed by scipy.spatial.distance.pdist for its metric parameter, or</span></span>
+<span id="cb1-619"><a href="#cb1-619" aria-hidden="true" tabindex="-1"></a><span class="co">        a metric listed in pairwise.PAIRWISE_DISTANCE_FUNCTIONS.</span></span>
+<span id="cb1-620"><a href="#cb1-620" aria-hidden="true" tabindex="-1"></a><span class="co">        If metric is &quot;precomputed&quot;, X is assumed to be a distance matrix.</span></span>
+<span id="cb1-621"><a href="#cb1-621" aria-hidden="true" tabindex="-1"></a><span class="co">        Alternatively, if metric is a callable function, it is called on each</span></span>
+<span id="cb1-622"><a href="#cb1-622" aria-hidden="true" tabindex="-1"></a><span class="co">        pair of instances (rows) and the resulting value recorded. The callable</span></span>
+<span id="cb1-623"><a href="#cb1-623" aria-hidden="true" tabindex="-1"></a><span class="co">        should take two arrays from X as input and return a value indicating</span></span>
+<span id="cb1-624"><a href="#cb1-624" aria-hidden="true" tabindex="-1"></a><span class="co">        the distance between them. The default is &quot;euclidean&quot; which is</span></span>
+<span id="cb1-625"><a href="#cb1-625" aria-hidden="true" tabindex="-1"></a><span class="co">        interpreted as squared euclidean distance.</span></span>
+<span id="cb1-626"><a href="#cb1-626" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-627"><a href="#cb1-627" aria-hidden="true" tabindex="-1"></a><span class="co">    metric_params : dict, default=None</span></span>
+<span id="cb1-628"><a href="#cb1-628" aria-hidden="true" tabindex="-1"></a><span class="co">        Additional keyword arguments for the metric function.</span></span>
+<span id="cb1-629"><a href="#cb1-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-630"><a href="#cb1-630" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 1.1</span></span>
+<span id="cb1-631"><a href="#cb1-631" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-632"><a href="#cb1-632" aria-hidden="true" tabindex="-1"></a><span class="co">    init : {&quot;random&quot;, &quot;pca&quot;} or ndarray of shape (n_samples, n_components), </span><span class="ch">\</span></span>
+<span id="cb1-633"><a href="#cb1-633" aria-hidden="true" tabindex="-1"></a><span class="co">            default=&quot;pca&quot;</span></span>
+<span id="cb1-634"><a href="#cb1-634" aria-hidden="true" tabindex="-1"></a><span class="co">        Initialization of embedding.</span></span>
+<span id="cb1-635"><a href="#cb1-635" aria-hidden="true" tabindex="-1"></a><span class="co">        PCA initialization cannot be used with precomputed distances and is</span></span>
+<span id="cb1-636"><a href="#cb1-636" aria-hidden="true" tabindex="-1"></a><span class="co">        usually more globally stable than random initialization.</span></span>
+<span id="cb1-637"><a href="#cb1-637" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-638"><a href="#cb1-638" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionchanged:: 1.2</span></span>
+<span id="cb1-639"><a href="#cb1-639" aria-hidden="true" tabindex="-1"></a><span class="co">           The default value changed to `&quot;pca&quot;`.</span></span>
+<span id="cb1-640"><a href="#cb1-640" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-641"><a href="#cb1-641" aria-hidden="true" tabindex="-1"></a><span class="co">    verbose : int, default=0</span></span>
+<span id="cb1-642"><a href="#cb1-642" aria-hidden="true" tabindex="-1"></a><span class="co">        Verbosity level.</span></span>
+<span id="cb1-643"><a href="#cb1-643" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-644"><a href="#cb1-644" aria-hidden="true" tabindex="-1"></a><span class="co">    random_state : int, RandomState instance or None, default=None</span></span>
+<span id="cb1-645"><a href="#cb1-645" aria-hidden="true" tabindex="-1"></a><span class="co">        Determines the random number generator. Pass an int for reproducible</span></span>
+<span id="cb1-646"><a href="#cb1-646" aria-hidden="true" tabindex="-1"></a><span class="co">        results across multiple function calls. Note that different</span></span>
+<span id="cb1-647"><a href="#cb1-647" aria-hidden="true" tabindex="-1"></a><span class="co">        initializations might result in different local minima of the cost</span></span>
+<span id="cb1-648"><a href="#cb1-648" aria-hidden="true" tabindex="-1"></a><span class="co">        function. See :term:`Glossary &lt;random_state&gt;`.</span></span>
+<span id="cb1-649"><a href="#cb1-649" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-650"><a href="#cb1-650" aria-hidden="true" tabindex="-1"></a><span class="co">    method : {&#39;barnes_hut&#39;, &#39;exact&#39;}, default=&#39;barnes_hut&#39;</span></span>
+<span id="cb1-651"><a href="#cb1-651" aria-hidden="true" tabindex="-1"></a><span class="co">        By default the gradient calculation algorithm uses Barnes-Hut</span></span>
+<span id="cb1-652"><a href="#cb1-652" aria-hidden="true" tabindex="-1"></a><span class="co">        approximation running in O(NlogN) time. method=&#39;exact&#39;</span></span>
+<span id="cb1-653"><a href="#cb1-653" aria-hidden="true" tabindex="-1"></a><span class="co">        will run on the slower, but exact, algorithm in O(N^2) time. The</span></span>
+<span id="cb1-654"><a href="#cb1-654" aria-hidden="true" tabindex="-1"></a><span class="co">        exact algorithm should be used when nearest-neighbor errors need</span></span>
+<span id="cb1-655"><a href="#cb1-655" aria-hidden="true" tabindex="-1"></a><span class="co">        to be better than 3%. However, the exact method cannot scale to</span></span>
+<span id="cb1-656"><a href="#cb1-656" aria-hidden="true" tabindex="-1"></a><span class="co">        millions of examples.</span></span>
+<span id="cb1-657"><a href="#cb1-657" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-658"><a href="#cb1-658" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 0.17</span></span>
+<span id="cb1-659"><a href="#cb1-659" aria-hidden="true" tabindex="-1"></a><span class="co">           Approximate optimization *method* via the Barnes-Hut.</span></span>
+<span id="cb1-660"><a href="#cb1-660" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-661"><a href="#cb1-661" aria-hidden="true" tabindex="-1"></a><span class="co">    angle : float, default=0.5</span></span>
+<span id="cb1-662"><a href="#cb1-662" aria-hidden="true" tabindex="-1"></a><span class="co">        Only used if method=&#39;barnes_hut&#39;</span></span>
+<span id="cb1-663"><a href="#cb1-663" aria-hidden="true" tabindex="-1"></a><span class="co">        This is the trade-off between speed and accuracy for Barnes-Hut T-SNE.</span></span>
+<span id="cb1-664"><a href="#cb1-664" aria-hidden="true" tabindex="-1"></a><span class="co">        &#39;angle&#39; is the angular size (referred to as theta in [3]) of a distant</span></span>
+<span id="cb1-665"><a href="#cb1-665" aria-hidden="true" tabindex="-1"></a><span class="co">        node as measured from a point. If this size is below &#39;angle&#39; then it is</span></span>
+<span id="cb1-666"><a href="#cb1-666" aria-hidden="true" tabindex="-1"></a><span class="co">        used as a summary node of all points contained within it.</span></span>
+<span id="cb1-667"><a href="#cb1-667" aria-hidden="true" tabindex="-1"></a><span class="co">        This method is not very sensitive to changes in this parameter</span></span>
+<span id="cb1-668"><a href="#cb1-668" aria-hidden="true" tabindex="-1"></a><span class="co">        in the range of 0.2 - 0.8. Angle less than 0.2 has quickly increasing</span></span>
+<span id="cb1-669"><a href="#cb1-669" aria-hidden="true" tabindex="-1"></a><span class="co">        computation time and angle greater 0.8 has quickly increasing error.</span></span>
+<span id="cb1-670"><a href="#cb1-670" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-671"><a href="#cb1-671" aria-hidden="true" tabindex="-1"></a><span class="co">    n_jobs : int, default=None</span></span>
+<span id="cb1-672"><a href="#cb1-672" aria-hidden="true" tabindex="-1"></a><span class="co">        The number of parallel jobs to run for neighbors search. This parameter</span></span>
+<span id="cb1-673"><a href="#cb1-673" aria-hidden="true" tabindex="-1"></a><span class="co">        has no impact when ``metric=&quot;precomputed&quot;`` or</span></span>
+<span id="cb1-674"><a href="#cb1-674" aria-hidden="true" tabindex="-1"></a><span class="co">        (``metric=&quot;euclidean&quot;`` and ``method=&quot;exact&quot;``).</span></span>
+<span id="cb1-675"><a href="#cb1-675" aria-hidden="true" tabindex="-1"></a><span class="co">        ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.</span></span>
+<span id="cb1-676"><a href="#cb1-676" aria-hidden="true" tabindex="-1"></a><span class="co">        ``-1`` means using all processors. See :term:`Glossary &lt;n_jobs&gt;`</span></span>
+<span id="cb1-677"><a href="#cb1-677" aria-hidden="true" tabindex="-1"></a><span class="co">        for more details.</span></span>
+<span id="cb1-678"><a href="#cb1-678" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-679"><a href="#cb1-679" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 0.22</span></span>
+<span id="cb1-680"><a href="#cb1-680" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-681"><a href="#cb1-681" aria-hidden="true" tabindex="-1"></a><span class="co">    square_distances : True, default=&#39;deprecated&#39;</span></span>
+<span id="cb1-682"><a href="#cb1-682" aria-hidden="true" tabindex="-1"></a><span class="co">        This parameter has no effect since distance values are always squared</span></span>
+<span id="cb1-683"><a href="#cb1-683" aria-hidden="true" tabindex="-1"></a><span class="co">        since 1.1.</span></span>
+<span id="cb1-684"><a href="#cb1-684" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-685"><a href="#cb1-685" aria-hidden="true" tabindex="-1"></a><span class="co">        .. deprecated:: 1.1</span></span>
+<span id="cb1-686"><a href="#cb1-686" aria-hidden="true" tabindex="-1"></a><span class="co">             `square_distances` has no effect from 1.1 and will be removed in</span></span>
+<span id="cb1-687"><a href="#cb1-687" aria-hidden="true" tabindex="-1"></a><span class="co">             1.3.</span></span>
+<span id="cb1-688"><a href="#cb1-688" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-689"><a href="#cb1-689" aria-hidden="true" tabindex="-1"></a><span class="co">    Attributes</span></span>
+<span id="cb1-690"><a href="#cb1-690" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-691"><a href="#cb1-691" aria-hidden="true" tabindex="-1"></a><span class="co">    embedding_ : array-like of shape (n_samples, n_components)</span></span>
+<span id="cb1-692"><a href="#cb1-692" aria-hidden="true" tabindex="-1"></a><span class="co">        Stores the embedding vectors.</span></span>
+<span id="cb1-693"><a href="#cb1-693" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-694"><a href="#cb1-694" aria-hidden="true" tabindex="-1"></a><span class="co">    kl_divergence_ : float</span></span>
+<span id="cb1-695"><a href="#cb1-695" aria-hidden="true" tabindex="-1"></a><span class="co">        Kullback-Leibler divergence after optimization.</span></span>
+<span id="cb1-696"><a href="#cb1-696" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-697"><a href="#cb1-697" aria-hidden="true" tabindex="-1"></a><span class="co">    n_features_in_ : int</span></span>
+<span id="cb1-698"><a href="#cb1-698" aria-hidden="true" tabindex="-1"></a><span class="co">        Number of features seen during :term:`fit`.</span></span>
+<span id="cb1-699"><a href="#cb1-699" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-700"><a href="#cb1-700" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 0.24</span></span>
+<span id="cb1-701"><a href="#cb1-701" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-702"><a href="#cb1-702" aria-hidden="true" tabindex="-1"></a><span class="co">    feature_names_in_ : ndarray of shape (`n_features_in_`,)</span></span>
+<span id="cb1-703"><a href="#cb1-703" aria-hidden="true" tabindex="-1"></a><span class="co">        Names of features seen during :term:`fit`. Defined only when `X`</span></span>
+<span id="cb1-704"><a href="#cb1-704" aria-hidden="true" tabindex="-1"></a><span class="co">        has feature names that are all strings.</span></span>
+<span id="cb1-705"><a href="#cb1-705" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-706"><a href="#cb1-706" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 1.0</span></span>
+<span id="cb1-707"><a href="#cb1-707" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-708"><a href="#cb1-708" aria-hidden="true" tabindex="-1"></a><span class="co">    learning_rate_ : float</span></span>
+<span id="cb1-709"><a href="#cb1-709" aria-hidden="true" tabindex="-1"></a><span class="co">        Effective learning rate.</span></span>
+<span id="cb1-710"><a href="#cb1-710" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-711"><a href="#cb1-711" aria-hidden="true" tabindex="-1"></a><span class="co">        .. versionadded:: 1.2</span></span>
+<span id="cb1-712"><a href="#cb1-712" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-713"><a href="#cb1-713" aria-hidden="true" tabindex="-1"></a><span class="co">    n_iter_ : int</span></span>
+<span id="cb1-714"><a href="#cb1-714" aria-hidden="true" tabindex="-1"></a><span class="co">        Number of iterations run.</span></span>
+<span id="cb1-715"><a href="#cb1-715" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-716"><a href="#cb1-716" aria-hidden="true" tabindex="-1"></a><span class="co">    See Also</span></span>
+<span id="cb1-717"><a href="#cb1-717" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb1-718"><a href="#cb1-718" aria-hidden="true" tabindex="-1"></a><span class="co">    sklearn.decomposition.PCA : Principal component analysis that is a linear</span></span>
+<span id="cb1-719"><a href="#cb1-719" aria-hidden="true" tabindex="-1"></a><span class="co">        dimensionality reduction method.</span></span>
+<span id="cb1-720"><a href="#cb1-720" aria-hidden="true" tabindex="-1"></a><span class="co">    sklearn.decomposition.KernelPCA : Non-linear dimensionality reduction using</span></span>
+<span id="cb1-721"><a href="#cb1-721" aria-hidden="true" tabindex="-1"></a><span class="co">        kernels and PCA.</span></span>
+<span id="cb1-722"><a href="#cb1-722" aria-hidden="true" tabindex="-1"></a><span class="co">    MDS : Manifold learning using multidimensional scaling.</span></span>
+<span id="cb1-723"><a href="#cb1-723" aria-hidden="true" tabindex="-1"></a><span class="co">    Isomap : Manifold learning based on Isometric Mapping.</span></span>
+<span id="cb1-724"><a href="#cb1-724" aria-hidden="true" tabindex="-1"></a><span class="co">    LocallyLinearEmbedding : Manifold learning using Locally Linear Embedding.</span></span>
+<span id="cb1-725"><a href="#cb1-725" aria-hidden="true" tabindex="-1"></a><span class="co">    SpectralEmbedding : Spectral embedding for non-linear dimensionality.</span></span>
+<span id="cb1-726"><a href="#cb1-726" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-727"><a href="#cb1-727" aria-hidden="true" tabindex="-1"></a><span class="co">    References</span></span>
+<span id="cb1-728"><a href="#cb1-728" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-729"><a href="#cb1-729" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-730"><a href="#cb1-730" aria-hidden="true" tabindex="-1"></a><span class="co">    [1] van der Maaten, L.J.P.; Hinton, G.E. Visualizing High-Dimensional Data</span></span>
+<span id="cb1-731"><a href="#cb1-731" aria-hidden="true" tabindex="-1"></a><span class="co">        Using t-SNE. Journal of Machine Learning Research 9:2579-2605, 2008.</span></span>
+<span id="cb1-732"><a href="#cb1-732" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-733"><a href="#cb1-733" aria-hidden="true" tabindex="-1"></a><span class="co">    [2] van der Maaten, L.J.P. t-Distributed Stochastic Neighbor Embedding</span></span>
+<span id="cb1-734"><a href="#cb1-734" aria-hidden="true" tabindex="-1"></a><span class="co">        https://lvdmaaten.github.io/tsne/</span></span>
+<span id="cb1-735"><a href="#cb1-735" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-736"><a href="#cb1-736" aria-hidden="true" tabindex="-1"></a><span class="co">    [3] L.J.P. van der Maaten. Accelerating t-SNE using Tree-Based Algorithms.</span></span>
+<span id="cb1-737"><a href="#cb1-737" aria-hidden="true" tabindex="-1"></a><span class="co">        Journal of Machine Learning Research 15(Oct):3221-3245, 2014.</span></span>
+<span id="cb1-738"><a href="#cb1-738" aria-hidden="true" tabindex="-1"></a><span class="co">        https://lvdmaaten.github.io/publications/papers/JMLR_2014.pdf</span></span>
+<span id="cb1-739"><a href="#cb1-739" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-740"><a href="#cb1-740" aria-hidden="true" tabindex="-1"></a><span class="co">    [4] Belkina, A. C., Ciccolella, C. O., Anno, R., Halpert, R., Spidlen, J.,</span></span>
+<span id="cb1-741"><a href="#cb1-741" aria-hidden="true" tabindex="-1"></a><span class="co">        &amp; Snyder-Cappione, J. E. (2019). Automated optimized parameters for</span></span>
+<span id="cb1-742"><a href="#cb1-742" aria-hidden="true" tabindex="-1"></a><span class="co">        T-distributed stochastic neighbor embedding improve visualization</span></span>
+<span id="cb1-743"><a href="#cb1-743" aria-hidden="true" tabindex="-1"></a><span class="co">        and analysis of large datasets. Nature Communications, 10(1), 1-12.</span></span>
+<span id="cb1-744"><a href="#cb1-744" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-745"><a href="#cb1-745" aria-hidden="true" tabindex="-1"></a><span class="co">    [5] Kobak, D., &amp; Berens, P. (2019). The art of using t-SNE for single-cell</span></span>
+<span id="cb1-746"><a href="#cb1-746" aria-hidden="true" tabindex="-1"></a><span class="co">        transcriptomics. Nature Communications, 10(1), 1-14.</span></span>
+<span id="cb1-747"><a href="#cb1-747" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-748"><a href="#cb1-748" aria-hidden="true" tabindex="-1"></a><span class="co">    Examples</span></span>
+<span id="cb1-749"><a href="#cb1-749" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb1-750"><a href="#cb1-750" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; import numpy as np</span></span>
+<span id="cb1-751"><a href="#cb1-751" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; from sklearn.manifold import TSNE</span></span>
+<span id="cb1-752"><a href="#cb1-752" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])</span></span>
+<span id="cb1-753"><a href="#cb1-753" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; X_embedded = TSNE(n_components=2, learning_rate=&#39;auto&#39;,</span></span>
+<span id="cb1-754"><a href="#cb1-754" aria-hidden="true" tabindex="-1"></a><span class="co">    ...                   init=&#39;random&#39;, perplexity=3).fit_transform(X)</span></span>
+<span id="cb1-755"><a href="#cb1-755" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; X_embedded.shape</span></span>
+<span id="cb1-756"><a href="#cb1-756" aria-hidden="true" tabindex="-1"></a><span class="co">    (4, 2)</span></span>
+<span id="cb1-757"><a href="#cb1-757" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb1-758"><a href="#cb1-758" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-759"><a href="#cb1-759" aria-hidden="true" tabindex="-1"></a>    _parameter_constraints: <span class="bu">dict</span> <span class="op">=</span> {</span>
+<span id="cb1-760"><a href="#cb1-760" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;n_components&quot;</span>: [Interval(Integral, <span class="dv">1</span>, <span class="va">None</span>, closed<span class="op">=</span><span class="st">&quot;left&quot;</span>)],</span>
+<span id="cb1-761"><a href="#cb1-761" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;perplexity&quot;</span>: [Interval(Real, <span class="dv">0</span>, <span class="va">None</span>, closed<span class="op">=</span><span class="st">&quot;neither&quot;</span>)],</span>
+<span id="cb1-762"><a href="#cb1-762" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;early_exaggeration&quot;</span>: [Interval(Real, <span class="dv">1</span>, <span class="va">None</span>, closed<span class="op">=</span><span class="st">&quot;left&quot;</span>)],</span>
+<span id="cb1-763"><a href="#cb1-763" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;learning_rate&quot;</span>: [</span>
+<span id="cb1-764"><a href="#cb1-764" aria-hidden="true" tabindex="-1"></a>            StrOptions({<span class="st">&quot;auto&quot;</span>}),</span>
+<span id="cb1-765"><a href="#cb1-765" aria-hidden="true" tabindex="-1"></a>            Interval(Real, <span class="dv">0</span>, <span class="va">None</span>, closed<span class="op">=</span><span class="st">&quot;neither&quot;</span>),</span>
+<span id="cb1-766"><a href="#cb1-766" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb1-767"><a href="#cb1-767" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;n_iter&quot;</span>: [Interval(Integral, <span class="dv">250</span>, <span class="va">None</span>, closed<span class="op">=</span><span class="st">&quot;left&quot;</span>)],</span>
+<span id="cb1-768"><a href="#cb1-768" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;n_iter_without_progress&quot;</span>: [Interval(Integral, <span class="op">-</span><span class="dv">1</span>, <span class="va">None</span>, closed<span class="op">=</span><span class="st">&quot;left&quot;</span>)],</span>
+<span id="cb1-769"><a href="#cb1-769" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;min_grad_norm&quot;</span>: [Interval(Real, <span class="dv">0</span>, <span class="va">None</span>, closed<span class="op">=</span><span class="st">&quot;left&quot;</span>)],</span>
+<span id="cb1-770"><a href="#cb1-770" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;metric&quot;</span>: [StrOptions(<span class="bu">set</span>(_VALID_METRICS) <span class="op">|</span> {<span class="st">&quot;precomputed&quot;</span>}), <span class="bu">callable</span>],</span>
+<span id="cb1-771"><a href="#cb1-771" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;metric_params&quot;</span>: [<span class="bu">dict</span>, <span class="va">None</span>],</span>
+<span id="cb1-772"><a href="#cb1-772" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;init&quot;</span>: [</span>
+<span id="cb1-773"><a href="#cb1-773" aria-hidden="true" tabindex="-1"></a>            StrOptions({<span class="st">&quot;pca&quot;</span>, <span class="st">&quot;random&quot;</span>}),</span>
+<span id="cb1-774"><a href="#cb1-774" aria-hidden="true" tabindex="-1"></a>            np.ndarray,</span>
+<span id="cb1-775"><a href="#cb1-775" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb1-776"><a href="#cb1-776" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;verbose&quot;</span>: [<span class="st">&quot;verbose&quot;</span>],</span>
+<span id="cb1-777"><a href="#cb1-777" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;random_state&quot;</span>: [<span class="st">&quot;random_state&quot;</span>],</span>
+<span id="cb1-778"><a href="#cb1-778" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;method&quot;</span>: [StrOptions({<span class="st">&quot;barnes_hut&quot;</span>, <span class="st">&quot;exact&quot;</span>})],</span>
+<span id="cb1-779"><a href="#cb1-779" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;angle&quot;</span>: [Interval(Real, <span class="dv">0</span>, <span class="dv">1</span>, closed<span class="op">=</span><span class="st">&quot;both&quot;</span>)],</span>
+<span id="cb1-780"><a href="#cb1-780" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;n_jobs&quot;</span>: [<span class="va">None</span>, Integral],</span>
+<span id="cb1-781"><a href="#cb1-781" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;square_distances&quot;</span>: [<span class="st">&quot;boolean&quot;</span>, Hidden(StrOptions({<span class="st">&quot;deprecated&quot;</span>}))],</span>
+<span id="cb1-782"><a href="#cb1-782" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-783"><a href="#cb1-783" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-784"><a href="#cb1-784" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Control the number of exploration iterations with early_exaggeration on</span></span>
+<span id="cb1-785"><a href="#cb1-785" aria-hidden="true" tabindex="-1"></a>    _EXPLORATION_N_ITER <span class="op">=</span> <span class="dv">250</span></span>
+<span id="cb1-786"><a href="#cb1-786" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-787"><a href="#cb1-787" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Control the number of iterations between progress checks</span></span>
+<span id="cb1-788"><a href="#cb1-788" aria-hidden="true" tabindex="-1"></a>    _N_ITER_CHECK <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb1-789"><a href="#cb1-789" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-790"><a href="#cb1-790" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(</span>
+<span id="cb1-791"><a href="#cb1-791" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>,</span>
+<span id="cb1-792"><a href="#cb1-792" aria-hidden="true" tabindex="-1"></a>        n_components<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb1-793"><a href="#cb1-793" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>,</span>
+<span id="cb1-794"><a href="#cb1-794" aria-hidden="true" tabindex="-1"></a>        perplexity<span class="op">=</span><span class="fl">30.0</span>,</span>
+<span id="cb1-795"><a href="#cb1-795" aria-hidden="true" tabindex="-1"></a>        early_exaggeration<span class="op">=</span><span class="fl">12.0</span>,</span>
+<span id="cb1-796"><a href="#cb1-796" aria-hidden="true" tabindex="-1"></a>        learning_rate<span class="op">=</span><span class="st">&quot;auto&quot;</span>,</span>
+<span id="cb1-797"><a href="#cb1-797" aria-hidden="true" tabindex="-1"></a>        n_iter<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb1-798"><a href="#cb1-798" aria-hidden="true" tabindex="-1"></a>        n_iter_without_progress<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb1-799"><a href="#cb1-799" aria-hidden="true" tabindex="-1"></a>        min_grad_norm<span class="op">=</span><span class="fl">1e-7</span>,</span>
+<span id="cb1-800"><a href="#cb1-800" aria-hidden="true" tabindex="-1"></a>        metric<span class="op">=</span><span class="st">&quot;euclidean&quot;</span>,</span>
+<span id="cb1-801"><a href="#cb1-801" aria-hidden="true" tabindex="-1"></a>        metric_params<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-802"><a href="#cb1-802" aria-hidden="true" tabindex="-1"></a>        init<span class="op">=</span><span class="st">&quot;pca&quot;</span>,</span>
+<span id="cb1-803"><a href="#cb1-803" aria-hidden="true" tabindex="-1"></a>        verbose<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb1-804"><a href="#cb1-804" aria-hidden="true" tabindex="-1"></a>        random_state<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-805"><a href="#cb1-805" aria-hidden="true" tabindex="-1"></a>        method<span class="op">=</span><span class="st">&quot;barnes_hut&quot;</span>,</span>
+<span id="cb1-806"><a href="#cb1-806" aria-hidden="true" tabindex="-1"></a>        angle<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb1-807"><a href="#cb1-807" aria-hidden="true" tabindex="-1"></a>        n_jobs<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-808"><a href="#cb1-808" aria-hidden="true" tabindex="-1"></a>        square_distances<span class="op">=</span><span class="st">&quot;deprecated&quot;</span>,</span>
+<span id="cb1-809"><a href="#cb1-809" aria-hidden="true" tabindex="-1"></a>    ):</span>
+<span id="cb1-810"><a href="#cb1-810" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_components <span class="op">=</span> n_components</span>
+<span id="cb1-811"><a href="#cb1-811" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.perplexity <span class="op">=</span> perplexity</span>
+<span id="cb1-812"><a href="#cb1-812" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.early_exaggeration <span class="op">=</span> early_exaggeration</span>
+<span id="cb1-813"><a href="#cb1-813" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.learning_rate <span class="op">=</span> learning_rate</span>
+<span id="cb1-814"><a href="#cb1-814" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_iter <span class="op">=</span> n_iter</span>
+<span id="cb1-815"><a href="#cb1-815" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_iter_without_progress <span class="op">=</span> n_iter_without_progress</span>
+<span id="cb1-816"><a href="#cb1-816" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.min_grad_norm <span class="op">=</span> min_grad_norm</span>
+<span id="cb1-817"><a href="#cb1-817" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.metric <span class="op">=</span> metric</span>
+<span id="cb1-818"><a href="#cb1-818" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.metric_params <span class="op">=</span> metric_params</span>
+<span id="cb1-819"><a href="#cb1-819" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.init <span class="op">=</span> init</span>
+<span id="cb1-820"><a href="#cb1-820" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.verbose <span class="op">=</span> verbose</span>
+<span id="cb1-821"><a href="#cb1-821" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.random_state <span class="op">=</span> random_state</span>
+<span id="cb1-822"><a href="#cb1-822" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.method <span class="op">=</span> method</span>
+<span id="cb1-823"><a href="#cb1-823" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.angle <span class="op">=</span> angle</span>
+<span id="cb1-824"><a href="#cb1-824" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_jobs <span class="op">=</span> n_jobs</span>
+<span id="cb1-825"><a href="#cb1-825" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.square_distances <span class="op">=</span> square_distances</span>
+<span id="cb1-826"><a href="#cb1-826" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-827"><a href="#cb1-827" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _check_params_vs_input(<span class="va">self</span>, X):</span>
+<span id="cb1-828"><a href="#cb1-828" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.perplexity <span class="op">&gt;=</span> <span class="bu">len</span>(X):</span>
+<span id="cb1-829"><a href="#cb1-829" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;perplexity must be less than n_samples&quot;</span>)</span>
+<span id="cb1-830"><a href="#cb1-830" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-831"><a href="#cb1-831" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _fit(<span class="va">self</span>, X, skip_num_points<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-832"><a href="#cb1-832" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Private function to fit the model using X as training data.&quot;&quot;&quot;</span></span>
+<span id="cb1-833"><a href="#cb1-833" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-834"><a href="#cb1-834" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(<span class="va">self</span>.init, <span class="bu">str</span>) <span class="kw">and</span> <span class="va">self</span>.init <span class="op">==</span> <span class="st">&quot;pca&quot;</span> <span class="kw">and</span> issparse(X):</span>
+<span id="cb1-835"><a href="#cb1-835" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">TypeError</span>(</span>
+<span id="cb1-836"><a href="#cb1-836" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;PCA initialization is currently not supported &quot;</span></span>
+<span id="cb1-837"><a href="#cb1-837" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;with the sparse input matrix. Use &quot;</span></span>
+<span id="cb1-838"><a href="#cb1-838" aria-hidden="true" tabindex="-1"></a>                <span class="st">&#39;init=&quot;random&quot; instead.&#39;</span></span>
+<span id="cb1-839"><a href="#cb1-839" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-840"><a href="#cb1-840" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.square_distances <span class="op">!=</span> <span class="st">&quot;deprecated&quot;</span>:</span>
+<span id="cb1-841"><a href="#cb1-841" aria-hidden="true" tabindex="-1"></a>            warnings.warn(</span>
+<span id="cb1-842"><a href="#cb1-842" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;The parameter `square_distances` has not effect and will be &quot;</span></span>
+<span id="cb1-843"><a href="#cb1-843" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;removed in version 1.3.&quot;</span>,</span>
+<span id="cb1-844"><a href="#cb1-844" aria-hidden="true" tabindex="-1"></a>                <span class="pp">FutureWarning</span>,</span>
+<span id="cb1-845"><a href="#cb1-845" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-846"><a href="#cb1-846" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.learning_rate <span class="op">==</span> <span class="st">&quot;auto&quot;</span>:</span>
+<span id="cb1-847"><a href="#cb1-847" aria-hidden="true" tabindex="-1"></a>            <span class="co"># See issue #18018</span></span>
+<span id="cb1-848"><a href="#cb1-848" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.learning_rate_ <span class="op">=</span> <span class="bu">len</span>(X) <span class="op">/</span> <span class="va">self</span>.early_exaggeration <span class="op">/</span> <span class="dv">4</span></span>
+<span id="cb1-849"><a href="#cb1-849" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.learning_rate_ <span class="op">=</span> np.maximum(<span class="va">self</span>.learning_rate_, <span class="dv">50</span>)</span>
+<span id="cb1-850"><a href="#cb1-850" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-851"><a href="#cb1-851" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.learning_rate_ <span class="op">=</span> <span class="va">self</span>.learning_rate</span>
+<span id="cb1-852"><a href="#cb1-852" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-853"><a href="#cb1-853" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.method <span class="op">==</span> <span class="st">&quot;barnes_hut&quot;</span>:</span>
+<span id="cb1-854"><a href="#cb1-854" aria-hidden="true" tabindex="-1"></a>            X <span class="op">=</span> <span class="va">self</span>._validate_data(</span>
+<span id="cb1-855"><a href="#cb1-855" aria-hidden="true" tabindex="-1"></a>                X,</span>
+<span id="cb1-856"><a href="#cb1-856" aria-hidden="true" tabindex="-1"></a>                accept_sparse<span class="op">=</span>[<span class="st">&quot;csr&quot;</span>],</span>
+<span id="cb1-857"><a href="#cb1-857" aria-hidden="true" tabindex="-1"></a>                ensure_min_samples<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb1-858"><a href="#cb1-858" aria-hidden="true" tabindex="-1"></a>                dtype<span class="op">=</span>[np.float32, np.float64],</span>
+<span id="cb1-859"><a href="#cb1-859" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-860"><a href="#cb1-860" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-861"><a href="#cb1-861" aria-hidden="true" tabindex="-1"></a>            X <span class="op">=</span> <span class="va">self</span>._validate_data(</span>
+<span id="cb1-862"><a href="#cb1-862" aria-hidden="true" tabindex="-1"></a>                X, accept_sparse<span class="op">=</span>[<span class="st">&quot;csr&quot;</span>, <span class="st">&quot;csc&quot;</span>, <span class="st">&quot;coo&quot;</span>], dtype<span class="op">=</span>[np.float32, np.float64]</span>
+<span id="cb1-863"><a href="#cb1-863" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-864"><a href="#cb1-864" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.metric <span class="op">==</span> <span class="st">&quot;precomputed&quot;</span>:</span>
+<span id="cb1-865"><a href="#cb1-865" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">isinstance</span>(<span class="va">self</span>.init, <span class="bu">str</span>) <span class="kw">and</span> <span class="va">self</span>.init <span class="op">==</span> <span class="st">&quot;pca&quot;</span>:</span>
+<span id="cb1-866"><a href="#cb1-866" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb1-867"><a href="#cb1-867" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;The parameter init=&quot;pca&quot; cannot be used with metric=&quot;precomputed&quot;.&#39;</span></span>
+<span id="cb1-868"><a href="#cb1-868" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-869"><a href="#cb1-869" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> X.shape[<span class="dv">0</span>] <span class="op">!=</span> X.shape[<span class="dv">1</span>]:</span>
+<span id="cb1-870"><a href="#cb1-870" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;X should be a square distance matrix&quot;</span>)</span>
+<span id="cb1-871"><a href="#cb1-871" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-872"><a href="#cb1-872" aria-hidden="true" tabindex="-1"></a>            check_non_negative(</span>
+<span id="cb1-873"><a href="#cb1-873" aria-hidden="true" tabindex="-1"></a>                X,</span>
+<span id="cb1-874"><a href="#cb1-874" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;TSNE.fit(). With metric=&#39;precomputed&#39;, X &quot;</span></span>
+<span id="cb1-875"><a href="#cb1-875" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;should contain positive distances.&quot;</span>,</span>
+<span id="cb1-876"><a href="#cb1-876" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-877"><a href="#cb1-877" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-878"><a href="#cb1-878" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.method <span class="op">==</span> <span class="st">&quot;exact&quot;</span> <span class="kw">and</span> issparse(X):</span>
+<span id="cb1-879"><a href="#cb1-879" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> <span class="pp">TypeError</span>(</span>
+<span id="cb1-880"><a href="#cb1-880" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;TSNE with method=&quot;exact&quot; does not accept sparse &#39;</span></span>
+<span id="cb1-881"><a href="#cb1-881" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;precomputed distance matrix. Use method=&quot;barnes_hut&quot; &#39;</span></span>
+<span id="cb1-882"><a href="#cb1-882" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;or provide the dense distance matrix.&quot;</span></span>
+<span id="cb1-883"><a href="#cb1-883" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-884"><a href="#cb1-884" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-885"><a href="#cb1-885" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.method <span class="op">==</span> <span class="st">&quot;barnes_hut&quot;</span> <span class="kw">and</span> <span class="va">self</span>.n_components <span class="op">&gt;</span> <span class="dv">3</span>:</span>
+<span id="cb1-886"><a href="#cb1-886" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb1-887"><a href="#cb1-887" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;&#39;n_components&#39; should be inferior to 4 for the &quot;</span></span>
+<span id="cb1-888"><a href="#cb1-888" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;barnes_hut algorithm as it relies on &quot;</span></span>
+<span id="cb1-889"><a href="#cb1-889" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;quad-tree or oct-tree.&quot;</span></span>
+<span id="cb1-890"><a href="#cb1-890" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-891"><a href="#cb1-891" aria-hidden="true" tabindex="-1"></a>        random_state <span class="op">=</span> check_random_state(<span class="va">self</span>.random_state)</span>
+<span id="cb1-892"><a href="#cb1-892" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-893"><a href="#cb1-893" aria-hidden="true" tabindex="-1"></a>        n_samples <span class="op">=</span> X.shape[<span class="dv">0</span>]</span>
+<span id="cb1-894"><a href="#cb1-894" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-895"><a href="#cb1-895" aria-hidden="true" tabindex="-1"></a>        neighbors_nn <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-896"><a href="#cb1-896" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.method <span class="op">==</span> <span class="st">&quot;exact&quot;</span>:</span>
+<span id="cb1-897"><a href="#cb1-897" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Retrieve the distance matrix, either using the precomputed one or</span></span>
+<span id="cb1-898"><a href="#cb1-898" aria-hidden="true" tabindex="-1"></a>            <span class="co"># computing it.</span></span>
+<span id="cb1-899"><a href="#cb1-899" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.metric <span class="op">==</span> <span class="st">&quot;precomputed&quot;</span>:</span>
+<span id="cb1-900"><a href="#cb1-900" aria-hidden="true" tabindex="-1"></a>                distances <span class="op">=</span> X</span>
+<span id="cb1-901"><a href="#cb1-901" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-902"><a href="#cb1-902" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="va">self</span>.verbose:</span>
+<span id="cb1-903"><a href="#cb1-903" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="st">&quot;[t-SNE] Computing pairwise distances...&quot;</span>)</span>
+<span id="cb1-904"><a href="#cb1-904" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-905"><a href="#cb1-905" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="va">self</span>.metric <span class="op">==</span> <span class="st">&quot;euclidean&quot;</span>:</span>
+<span id="cb1-906"><a href="#cb1-906" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Euclidean is squared here, rather than using **= 2,</span></span>
+<span id="cb1-907"><a href="#cb1-907" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># because euclidean_distances already calculates</span></span>
+<span id="cb1-908"><a href="#cb1-908" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># squared distances, and returns np.sqrt(dist) for</span></span>
+<span id="cb1-909"><a href="#cb1-909" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># squared=False.</span></span>
+<span id="cb1-910"><a href="#cb1-910" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Also, Euclidean is slower for n_jobs&gt;1, so don&#39;t set here</span></span>
+<span id="cb1-911"><a href="#cb1-911" aria-hidden="true" tabindex="-1"></a>                    distances <span class="op">=</span> pairwise_distances(X, metric<span class="op">=</span><span class="va">self</span>.metric, squared<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-912"><a href="#cb1-912" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb1-913"><a href="#cb1-913" aria-hidden="true" tabindex="-1"></a>                    metric_params_ <span class="op">=</span> <span class="va">self</span>.metric_params <span class="kw">or</span> {}</span>
+<span id="cb1-914"><a href="#cb1-914" aria-hidden="true" tabindex="-1"></a>                    distances <span class="op">=</span> pairwise_distances(</span>
+<span id="cb1-915"><a href="#cb1-915" aria-hidden="true" tabindex="-1"></a>                        X, metric<span class="op">=</span><span class="va">self</span>.metric, n_jobs<span class="op">=</span><span class="va">self</span>.n_jobs, <span class="op">**</span>metric_params_</span>
+<span id="cb1-916"><a href="#cb1-916" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb1-917"><a href="#cb1-917" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-918"><a href="#cb1-918" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> np.<span class="bu">any</span>(distances <span class="op">&lt;</span> <span class="dv">0</span>):</span>
+<span id="cb1-919"><a href="#cb1-919" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb1-920"><a href="#cb1-920" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;All distances should be positive, the metric given is not correct&quot;</span></span>
+<span id="cb1-921"><a href="#cb1-921" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-922"><a href="#cb1-922" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-923"><a href="#cb1-923" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.metric <span class="op">!=</span> <span class="st">&quot;euclidean&quot;</span>:</span>
+<span id="cb1-924"><a href="#cb1-924" aria-hidden="true" tabindex="-1"></a>                distances <span class="op">**=</span> <span class="dv">2</span></span>
+<span id="cb1-925"><a href="#cb1-925" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-926"><a href="#cb1-926" aria-hidden="true" tabindex="-1"></a>            <span class="co"># compute the joint probability distribution for the input space</span></span>
+<span id="cb1-927"><a href="#cb1-927" aria-hidden="true" tabindex="-1"></a>            P <span class="op">=</span> _joint_probabilities(distances, <span class="va">self</span>.perplexity, <span class="va">self</span>.verbose)</span>
+<span id="cb1-928"><a href="#cb1-928" aria-hidden="true" tabindex="-1"></a>            <span class="cf">assert</span> np.<span class="bu">all</span>(np.isfinite(P)), <span class="st">&quot;All probabilities should be finite&quot;</span></span>
+<span id="cb1-929"><a href="#cb1-929" aria-hidden="true" tabindex="-1"></a>            <span class="cf">assert</span> np.<span class="bu">all</span>(P <span class="op">&gt;=</span> <span class="dv">0</span>), <span class="st">&quot;All probabilities should be non-negative&quot;</span></span>
+<span id="cb1-930"><a href="#cb1-930" aria-hidden="true" tabindex="-1"></a>            <span class="cf">assert</span> np.<span class="bu">all</span>(</span>
+<span id="cb1-931"><a href="#cb1-931" aria-hidden="true" tabindex="-1"></a>                P <span class="op">&lt;=</span> <span class="dv">1</span></span>
+<span id="cb1-932"><a href="#cb1-932" aria-hidden="true" tabindex="-1"></a>            ), <span class="st">&quot;All probabilities should be less or then equal to one&quot;</span></span>
+<span id="cb1-933"><a href="#cb1-933" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-934"><a href="#cb1-934" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-935"><a href="#cb1-935" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Compute the number of nearest neighbors to find.</span></span>
+<span id="cb1-936"><a href="#cb1-936" aria-hidden="true" tabindex="-1"></a>            <span class="co"># LvdM uses 3 * perplexity as the number of neighbors.</span></span>
+<span id="cb1-937"><a href="#cb1-937" aria-hidden="true" tabindex="-1"></a>            <span class="co"># In the event that we have very small # of points</span></span>
+<span id="cb1-938"><a href="#cb1-938" aria-hidden="true" tabindex="-1"></a>            <span class="co"># set the neighbors to n - 1.</span></span>
+<span id="cb1-939"><a href="#cb1-939" aria-hidden="true" tabindex="-1"></a>            n_neighbors <span class="op">=</span> <span class="bu">min</span>(n_samples <span class="op">-</span> <span class="dv">1</span>, <span class="bu">int</span>(<span class="fl">3.0</span> <span class="op">*</span> <span class="va">self</span>.perplexity <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb1-940"><a href="#cb1-940" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-941"><a href="#cb1-941" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.verbose:</span>
+<span id="cb1-942"><a href="#cb1-942" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">&quot;[t-SNE] Computing </span><span class="sc">{}</span><span class="st"> nearest neighbors...&quot;</span>.<span class="bu">format</span>(n_neighbors))</span>
+<span id="cb1-943"><a href="#cb1-943" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-944"><a href="#cb1-944" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Find the nearest neighbors for every point</span></span>
+<span id="cb1-945"><a href="#cb1-945" aria-hidden="true" tabindex="-1"></a>            knn <span class="op">=</span> NearestNeighbors(</span>
+<span id="cb1-946"><a href="#cb1-946" aria-hidden="true" tabindex="-1"></a>                algorithm<span class="op">=</span><span class="st">&quot;auto&quot;</span>,</span>
+<span id="cb1-947"><a href="#cb1-947" aria-hidden="true" tabindex="-1"></a>                n_jobs<span class="op">=</span><span class="va">self</span>.n_jobs,</span>
+<span id="cb1-948"><a href="#cb1-948" aria-hidden="true" tabindex="-1"></a>                n_neighbors<span class="op">=</span>n_neighbors,</span>
+<span id="cb1-949"><a href="#cb1-949" aria-hidden="true" tabindex="-1"></a>                metric<span class="op">=</span><span class="va">self</span>.metric,</span>
+<span id="cb1-950"><a href="#cb1-950" aria-hidden="true" tabindex="-1"></a>                metric_params<span class="op">=</span><span class="va">self</span>.metric_params,</span>
+<span id="cb1-951"><a href="#cb1-951" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-952"><a href="#cb1-952" aria-hidden="true" tabindex="-1"></a>            t0 <span class="op">=</span> time()</span>
+<span id="cb1-953"><a href="#cb1-953" aria-hidden="true" tabindex="-1"></a>            knn.fit(X)</span>
+<span id="cb1-954"><a href="#cb1-954" aria-hidden="true" tabindex="-1"></a>            duration <span class="op">=</span> time() <span class="op">-</span> t0</span>
+<span id="cb1-955"><a href="#cb1-955" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.verbose:</span>
+<span id="cb1-956"><a href="#cb1-956" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(</span>
+<span id="cb1-957"><a href="#cb1-957" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;[t-SNE] Indexed </span><span class="sc">{}</span><span class="st"> samples in </span><span class="sc">{:.3f}</span><span class="st">s...&quot;</span>.<span class="bu">format</span>(</span>
+<span id="cb1-958"><a href="#cb1-958" aria-hidden="true" tabindex="-1"></a>                        n_samples, duration</span>
+<span id="cb1-959"><a href="#cb1-959" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb1-960"><a href="#cb1-960" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-961"><a href="#cb1-961" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-962"><a href="#cb1-962" aria-hidden="true" tabindex="-1"></a>            t0 <span class="op">=</span> time()</span>
+<span id="cb1-963"><a href="#cb1-963" aria-hidden="true" tabindex="-1"></a>            distances_nn <span class="op">=</span> knn.kneighbors_graph(mode<span class="op">=</span><span class="st">&quot;distance&quot;</span>)</span>
+<span id="cb1-964"><a href="#cb1-964" aria-hidden="true" tabindex="-1"></a>            duration <span class="op">=</span> time() <span class="op">-</span> t0</span>
+<span id="cb1-965"><a href="#cb1-965" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.verbose:</span>
+<span id="cb1-966"><a href="#cb1-966" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(</span>
+<span id="cb1-967"><a href="#cb1-967" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;[t-SNE] Computed neighbors for </span><span class="sc">{}</span><span class="st"> samples in </span><span class="sc">{:.3f}</span><span class="st">s...&quot;</span>.<span class="bu">format</span>(</span>
+<span id="cb1-968"><a href="#cb1-968" aria-hidden="true" tabindex="-1"></a>                        n_samples, duration</span>
+<span id="cb1-969"><a href="#cb1-969" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb1-970"><a href="#cb1-970" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-971"><a href="#cb1-971" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-972"><a href="#cb1-972" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Free the memory used by the ball_tree</span></span>
+<span id="cb1-973"><a href="#cb1-973" aria-hidden="true" tabindex="-1"></a>            <span class="kw">del</span> knn</span>
+<span id="cb1-974"><a href="#cb1-974" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-975"><a href="#cb1-975" aria-hidden="true" tabindex="-1"></a>            <span class="co"># knn return the euclidean distance but we need it squared</span></span>
+<span id="cb1-976"><a href="#cb1-976" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to be consistent with the &#39;exact&#39; method. Note that the</span></span>
+<span id="cb1-977"><a href="#cb1-977" aria-hidden="true" tabindex="-1"></a>            <span class="co"># the method was derived using the euclidean method as in the</span></span>
+<span id="cb1-978"><a href="#cb1-978" aria-hidden="true" tabindex="-1"></a>            <span class="co"># input space. Not sure of the implication of using a different</span></span>
+<span id="cb1-979"><a href="#cb1-979" aria-hidden="true" tabindex="-1"></a>            <span class="co"># metric.</span></span>
+<span id="cb1-980"><a href="#cb1-980" aria-hidden="true" tabindex="-1"></a>            distances_nn.data <span class="op">**=</span> <span class="dv">2</span></span>
+<span id="cb1-981"><a href="#cb1-981" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-982"><a href="#cb1-982" aria-hidden="true" tabindex="-1"></a>            <span class="co"># compute the joint probability distribution for the input space</span></span>
+<span id="cb1-983"><a href="#cb1-983" aria-hidden="true" tabindex="-1"></a>            P <span class="op">=</span> _joint_probabilities_nn(distances_nn, <span class="va">self</span>.perplexity, <span class="va">self</span>.verbose)</span>
+<span id="cb1-984"><a href="#cb1-984" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-985"><a href="#cb1-985" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(<span class="va">self</span>.init, np.ndarray):</span>
+<span id="cb1-986"><a href="#cb1-986" aria-hidden="true" tabindex="-1"></a>            X_embedded <span class="op">=</span> <span class="va">self</span>.init</span>
+<span id="cb1-987"><a href="#cb1-987" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.init <span class="op">==</span> <span class="st">&quot;pca&quot;</span>:</span>
+<span id="cb1-988"><a href="#cb1-988" aria-hidden="true" tabindex="-1"></a>            pca <span class="op">=</span> PCA(</span>
+<span id="cb1-989"><a href="#cb1-989" aria-hidden="true" tabindex="-1"></a>                n_components<span class="op">=</span><span class="va">self</span>.n_components,</span>
+<span id="cb1-990"><a href="#cb1-990" aria-hidden="true" tabindex="-1"></a>                svd_solver<span class="op">=</span><span class="st">&quot;randomized&quot;</span>,</span>
+<span id="cb1-991"><a href="#cb1-991" aria-hidden="true" tabindex="-1"></a>                random_state<span class="op">=</span>random_state,</span>
+<span id="cb1-992"><a href="#cb1-992" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-993"><a href="#cb1-993" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Always output a numpy array, no matter what is configured globally</span></span>
+<span id="cb1-994"><a href="#cb1-994" aria-hidden="true" tabindex="-1"></a>            pca.set_output(transform<span class="op">=</span><span class="st">&quot;default&quot;</span>)</span>
+<span id="cb1-995"><a href="#cb1-995" aria-hidden="true" tabindex="-1"></a>            X_embedded <span class="op">=</span> pca.fit_transform(X).astype(np.float32, copy<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-996"><a href="#cb1-996" aria-hidden="true" tabindex="-1"></a>            <span class="co"># PCA is rescaled so that PC1 has standard deviation 1e-4 which is</span></span>
+<span id="cb1-997"><a href="#cb1-997" aria-hidden="true" tabindex="-1"></a>            <span class="co"># the default value for random initialization. See issue #18018.</span></span>
+<span id="cb1-998"><a href="#cb1-998" aria-hidden="true" tabindex="-1"></a>            X_embedded <span class="op">=</span> X_embedded <span class="op">/</span> np.std(X_embedded[:, <span class="dv">0</span>]) <span class="op">*</span> <span class="fl">1e-4</span></span>
+<span id="cb1-999"><a href="#cb1-999" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.init <span class="op">==</span> <span class="st">&quot;random&quot;</span>:</span>
+<span id="cb1-1000"><a href="#cb1-1000" aria-hidden="true" tabindex="-1"></a>            <span class="co"># The embedding is initialized with iid samples from Gaussians with</span></span>
+<span id="cb1-1001"><a href="#cb1-1001" aria-hidden="true" tabindex="-1"></a>            <span class="co"># standard deviation 1e-4.</span></span>
+<span id="cb1-1002"><a href="#cb1-1002" aria-hidden="true" tabindex="-1"></a>            X_embedded <span class="op">=</span> <span class="fl">1e-4</span> <span class="op">*</span> random_state.standard_normal(</span>
+<span id="cb1-1003"><a href="#cb1-1003" aria-hidden="true" tabindex="-1"></a>                size<span class="op">=</span>(n_samples, <span class="va">self</span>.n_components)</span>
+<span id="cb1-1004"><a href="#cb1-1004" aria-hidden="true" tabindex="-1"></a>            ).astype(np.float32)</span>
+<span id="cb1-1005"><a href="#cb1-1005" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1006"><a href="#cb1-1006" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Degrees of freedom of the Student&#39;s t-distribution. The suggestion</span></span>
+<span id="cb1-1007"><a href="#cb1-1007" aria-hidden="true" tabindex="-1"></a>        <span class="co"># degrees_of_freedom = n_components - 1 comes from</span></span>
+<span id="cb1-1008"><a href="#cb1-1008" aria-hidden="true" tabindex="-1"></a>        <span class="co"># &quot;Learning a Parametric Embedding by Preserving Local Structure&quot;</span></span>
+<span id="cb1-1009"><a href="#cb1-1009" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Laurens van der Maaten, 2009.</span></span>
+<span id="cb1-1010"><a href="#cb1-1010" aria-hidden="true" tabindex="-1"></a>        degrees_of_freedom <span class="op">=</span> <span class="bu">max</span>(<span class="va">self</span>.n_components <span class="op">-</span> <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb1-1011"><a href="#cb1-1011" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1012"><a href="#cb1-1012" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._tsne(</span>
+<span id="cb1-1013"><a href="#cb1-1013" aria-hidden="true" tabindex="-1"></a>            P,</span>
+<span id="cb1-1014"><a href="#cb1-1014" aria-hidden="true" tabindex="-1"></a>            degrees_of_freedom,</span>
+<span id="cb1-1015"><a href="#cb1-1015" aria-hidden="true" tabindex="-1"></a>            n_samples,</span>
+<span id="cb1-1016"><a href="#cb1-1016" aria-hidden="true" tabindex="-1"></a>            X_embedded<span class="op">=</span>X_embedded,</span>
+<span id="cb1-1017"><a href="#cb1-1017" aria-hidden="true" tabindex="-1"></a>            neighbors<span class="op">=</span>neighbors_nn,</span>
+<span id="cb1-1018"><a href="#cb1-1018" aria-hidden="true" tabindex="-1"></a>            skip_num_points<span class="op">=</span>skip_num_points,</span>
+<span id="cb1-1019"><a href="#cb1-1019" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-1020"><a href="#cb1-1020" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1021"><a href="#cb1-1021" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _tsne(</span>
+<span id="cb1-1022"><a href="#cb1-1022" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>,</span>
+<span id="cb1-1023"><a href="#cb1-1023" aria-hidden="true" tabindex="-1"></a>        P,</span>
+<span id="cb1-1024"><a href="#cb1-1024" aria-hidden="true" tabindex="-1"></a>        degrees_of_freedom,</span>
+<span id="cb1-1025"><a href="#cb1-1025" aria-hidden="true" tabindex="-1"></a>        n_samples,</span>
+<span id="cb1-1026"><a href="#cb1-1026" aria-hidden="true" tabindex="-1"></a>        X_embedded,</span>
+<span id="cb1-1027"><a href="#cb1-1027" aria-hidden="true" tabindex="-1"></a>        neighbors<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-1028"><a href="#cb1-1028" aria-hidden="true" tabindex="-1"></a>        skip_num_points<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb1-1029"><a href="#cb1-1029" aria-hidden="true" tabindex="-1"></a>    ):</span>
+<span id="cb1-1030"><a href="#cb1-1030" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Runs t-SNE.&quot;&quot;&quot;</span></span>
+<span id="cb1-1031"><a href="#cb1-1031" aria-hidden="true" tabindex="-1"></a>        <span class="co"># t-SNE minimizes the Kullback-Leiber divergence of the Gaussians P</span></span>
+<span id="cb1-1032"><a href="#cb1-1032" aria-hidden="true" tabindex="-1"></a>        <span class="co"># and the Student&#39;s t-distributions Q. The optimization algorithm that</span></span>
+<span id="cb1-1033"><a href="#cb1-1033" aria-hidden="true" tabindex="-1"></a>        <span class="co"># we use is batch gradient descent with two stages:</span></span>
+<span id="cb1-1034"><a href="#cb1-1034" aria-hidden="true" tabindex="-1"></a>        <span class="co"># * initial optimization with early exaggeration and momentum at 0.5</span></span>
+<span id="cb1-1035"><a href="#cb1-1035" aria-hidden="true" tabindex="-1"></a>        <span class="co"># * final optimization with momentum at 0.8</span></span>
+<span id="cb1-1036"><a href="#cb1-1036" aria-hidden="true" tabindex="-1"></a>        params <span class="op">=</span> X_embedded.ravel()</span>
+<span id="cb1-1037"><a href="#cb1-1037" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1038"><a href="#cb1-1038" aria-hidden="true" tabindex="-1"></a>        opt_args <span class="op">=</span> {</span>
+<span id="cb1-1039"><a href="#cb1-1039" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;it&quot;</span>: <span class="dv">0</span>,</span>
+<span id="cb1-1040"><a href="#cb1-1040" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;n_iter_check&quot;</span>: <span class="va">self</span>._N_ITER_CHECK,</span>
+<span id="cb1-1041"><a href="#cb1-1041" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;min_grad_norm&quot;</span>: <span class="va">self</span>.min_grad_norm,</span>
+<span id="cb1-1042"><a href="#cb1-1042" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;learning_rate&quot;</span>: <span class="va">self</span>.learning_rate_,</span>
+<span id="cb1-1043"><a href="#cb1-1043" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;verbose&quot;</span>: <span class="va">self</span>.verbose,</span>
+<span id="cb1-1044"><a href="#cb1-1044" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;kwargs&quot;</span>: <span class="bu">dict</span>(skip_num_points<span class="op">=</span>skip_num_points),</span>
+<span id="cb1-1045"><a href="#cb1-1045" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;args&quot;</span>: [P, degrees_of_freedom, n_samples, <span class="va">self</span>.n_components],</span>
+<span id="cb1-1046"><a href="#cb1-1046" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;n_iter_without_progress&quot;</span>: <span class="va">self</span>._EXPLORATION_N_ITER,</span>
+<span id="cb1-1047"><a href="#cb1-1047" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;n_iter&quot;</span>: <span class="va">self</span>._EXPLORATION_N_ITER,</span>
+<span id="cb1-1048"><a href="#cb1-1048" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;momentum&quot;</span>: <span class="fl">0.5</span>,</span>
+<span id="cb1-1049"><a href="#cb1-1049" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-1050"><a href="#cb1-1050" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.method <span class="op">==</span> <span class="st">&quot;barnes_hut&quot;</span>:</span>
+<span id="cb1-1051"><a href="#cb1-1051" aria-hidden="true" tabindex="-1"></a>            obj_func <span class="op">=</span> _kl_divergence_bh</span>
+<span id="cb1-1052"><a href="#cb1-1052" aria-hidden="true" tabindex="-1"></a>            opt_args[<span class="st">&quot;kwargs&quot;</span>][<span class="st">&quot;angle&quot;</span>] <span class="op">=</span> <span class="va">self</span>.angle</span>
+<span id="cb1-1053"><a href="#cb1-1053" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Repeat verbose argument for _kl_divergence_bh</span></span>
+<span id="cb1-1054"><a href="#cb1-1054" aria-hidden="true" tabindex="-1"></a>            opt_args[<span class="st">&quot;kwargs&quot;</span>][<span class="st">&quot;verbose&quot;</span>] <span class="op">=</span> <span class="va">self</span>.verbose</span>
+<span id="cb1-1055"><a href="#cb1-1055" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get the number of threads for gradient computation here to</span></span>
+<span id="cb1-1056"><a href="#cb1-1056" aria-hidden="true" tabindex="-1"></a>            <span class="co"># avoid recomputing it at each iteration.</span></span>
+<span id="cb1-1057"><a href="#cb1-1057" aria-hidden="true" tabindex="-1"></a>            opt_args[<span class="st">&quot;kwargs&quot;</span>][<span class="st">&quot;num_threads&quot;</span>] <span class="op">=</span> _openmp_effective_n_threads()</span>
+<span id="cb1-1058"><a href="#cb1-1058" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-1059"><a href="#cb1-1059" aria-hidden="true" tabindex="-1"></a>            obj_func <span class="op">=</span> _kl_divergence</span>
+<span id="cb1-1060"><a href="#cb1-1060" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1061"><a href="#cb1-1061" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Learning schedule (part 1): do 250 iteration with lower momentum but</span></span>
+<span id="cb1-1062"><a href="#cb1-1062" aria-hidden="true" tabindex="-1"></a>        <span class="co"># higher learning rate controlled via the early exaggeration parameter</span></span>
+<span id="cb1-1063"><a href="#cb1-1063" aria-hidden="true" tabindex="-1"></a>        P <span class="op">*=</span> <span class="va">self</span>.early_exaggeration</span>
+<span id="cb1-1064"><a href="#cb1-1064" aria-hidden="true" tabindex="-1"></a>        params, kl_divergence, it <span class="op">=</span> _gradient_descent(obj_func, params, <span class="op">**</span>opt_args)</span>
+<span id="cb1-1065"><a href="#cb1-1065" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.verbose:</span>
+<span id="cb1-1066"><a href="#cb1-1066" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(</span>
+<span id="cb1-1067"><a href="#cb1-1067" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;[t-SNE] KL divergence after </span><span class="sc">%d</span><span class="st"> iterations with early exaggeration: </span><span class="sc">%f</span><span class="st">&quot;</span></span>
+<span id="cb1-1068"><a href="#cb1-1068" aria-hidden="true" tabindex="-1"></a>                <span class="op">%</span> (it <span class="op">+</span> <span class="dv">1</span>, kl_divergence)</span>
+<span id="cb1-1069"><a href="#cb1-1069" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-1070"><a href="#cb1-1070" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1071"><a href="#cb1-1071" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Learning schedule (part 2): disable early exaggeration and finish</span></span>
+<span id="cb1-1072"><a href="#cb1-1072" aria-hidden="true" tabindex="-1"></a>        <span class="co"># optimization with a higher momentum at 0.8</span></span>
+<span id="cb1-1073"><a href="#cb1-1073" aria-hidden="true" tabindex="-1"></a>        P <span class="op">/=</span> <span class="va">self</span>.early_exaggeration</span>
+<span id="cb1-1074"><a href="#cb1-1074" aria-hidden="true" tabindex="-1"></a>        remaining <span class="op">=</span> <span class="va">self</span>.n_iter <span class="op">-</span> <span class="va">self</span>._EXPLORATION_N_ITER</span>
+<span id="cb1-1075"><a href="#cb1-1075" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> it <span class="op">&lt;</span> <span class="va">self</span>._EXPLORATION_N_ITER <span class="kw">or</span> remaining <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-1076"><a href="#cb1-1076" aria-hidden="true" tabindex="-1"></a>            opt_args[<span class="st">&quot;n_iter&quot;</span>] <span class="op">=</span> <span class="va">self</span>.n_iter</span>
+<span id="cb1-1077"><a href="#cb1-1077" aria-hidden="true" tabindex="-1"></a>            opt_args[<span class="st">&quot;it&quot;</span>] <span class="op">=</span> it <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-1078"><a href="#cb1-1078" aria-hidden="true" tabindex="-1"></a>            opt_args[<span class="st">&quot;momentum&quot;</span>] <span class="op">=</span> <span class="fl">0.8</span></span>
+<span id="cb1-1079"><a href="#cb1-1079" aria-hidden="true" tabindex="-1"></a>            opt_args[<span class="st">&quot;n_iter_without_progress&quot;</span>] <span class="op">=</span> <span class="va">self</span>.n_iter_without_progress</span>
+<span id="cb1-1080"><a href="#cb1-1080" aria-hidden="true" tabindex="-1"></a>            params, kl_divergence, it <span class="op">=</span> _gradient_descent(obj_func, params, <span class="op">**</span>opt_args)</span>
+<span id="cb1-1081"><a href="#cb1-1081" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1082"><a href="#cb1-1082" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Save the final number of iterations</span></span>
+<span id="cb1-1083"><a href="#cb1-1083" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_iter_ <span class="op">=</span> it</span>
+<span id="cb1-1084"><a href="#cb1-1084" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1085"><a href="#cb1-1085" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.verbose:</span>
+<span id="cb1-1086"><a href="#cb1-1086" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(</span>
+<span id="cb1-1087"><a href="#cb1-1087" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;[t-SNE] KL divergence after </span><span class="sc">%d</span><span class="st"> iterations: </span><span class="sc">%f</span><span class="st">&quot;</span></span>
+<span id="cb1-1088"><a href="#cb1-1088" aria-hidden="true" tabindex="-1"></a>                <span class="op">%</span> (it <span class="op">+</span> <span class="dv">1</span>, kl_divergence)</span>
+<span id="cb1-1089"><a href="#cb1-1089" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-1090"><a href="#cb1-1090" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1091"><a href="#cb1-1091" aria-hidden="true" tabindex="-1"></a>        X_embedded <span class="op">=</span> params.reshape(n_samples, <span class="va">self</span>.n_components)</span>
+<span id="cb1-1092"><a href="#cb1-1092" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.kl_divergence_ <span class="op">=</span> kl_divergence</span>
+<span id="cb1-1093"><a href="#cb1-1093" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1094"><a href="#cb1-1094" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> X_embedded</span>
+<span id="cb1-1095"><a href="#cb1-1095" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1096"><a href="#cb1-1096" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit_transform(<span class="va">self</span>, X, y<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-1097"><a href="#cb1-1097" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Fit X into an embedded space and return that transformed output.</span></span>
+<span id="cb1-1098"><a href="#cb1-1098" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1099"><a href="#cb1-1099" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-1100"><a href="#cb1-1100" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb1-1101"><a href="#cb1-1101" aria-hidden="true" tabindex="-1"></a><span class="co">        X : {array-like, sparse matrix} of shape (n_samples, n_features) or </span><span class="ch">\</span></span>
+<span id="cb1-1102"><a href="#cb1-1102" aria-hidden="true" tabindex="-1"></a><span class="co">            (n_samples, n_samples)</span></span>
+<span id="cb1-1103"><a href="#cb1-1103" aria-hidden="true" tabindex="-1"></a><span class="co">            If the metric is &#39;precomputed&#39; X must be a square distance</span></span>
+<span id="cb1-1104"><a href="#cb1-1104" aria-hidden="true" tabindex="-1"></a><span class="co">            matrix. Otherwise it contains a sample per row. If the method</span></span>
+<span id="cb1-1105"><a href="#cb1-1105" aria-hidden="true" tabindex="-1"></a><span class="co">            is &#39;exact&#39;, X may be a sparse matrix of type &#39;csr&#39;, &#39;csc&#39;</span></span>
+<span id="cb1-1106"><a href="#cb1-1106" aria-hidden="true" tabindex="-1"></a><span class="co">            or &#39;coo&#39;. If the method is &#39;barnes_hut&#39; and the metric is</span></span>
+<span id="cb1-1107"><a href="#cb1-1107" aria-hidden="true" tabindex="-1"></a><span class="co">            &#39;precomputed&#39;, X may be a precomputed sparse graph.</span></span>
+<span id="cb1-1108"><a href="#cb1-1108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1109"><a href="#cb1-1109" aria-hidden="true" tabindex="-1"></a><span class="co">        y : None</span></span>
+<span id="cb1-1110"><a href="#cb1-1110" aria-hidden="true" tabindex="-1"></a><span class="co">            Ignored.</span></span>
+<span id="cb1-1111"><a href="#cb1-1111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1112"><a href="#cb1-1112" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-1113"><a href="#cb1-1113" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-1114"><a href="#cb1-1114" aria-hidden="true" tabindex="-1"></a><span class="co">        X_new : ndarray of shape (n_samples, n_components)</span></span>
+<span id="cb1-1115"><a href="#cb1-1115" aria-hidden="true" tabindex="-1"></a><span class="co">            Embedding of the training data in low-dimensional space.</span></span>
+<span id="cb1-1116"><a href="#cb1-1116" aria-hidden="true" tabindex="-1"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb1-1117"><a href="#cb1-1117" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._validate_params()</span>
+<span id="cb1-1118"><a href="#cb1-1118" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._check_params_vs_input(X)</span>
+<span id="cb1-1119"><a href="#cb1-1119" aria-hidden="true" tabindex="-1"></a>        embedding <span class="op">=</span> <span class="va">self</span>._fit(X)</span>
+<span id="cb1-1120"><a href="#cb1-1120" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.embedding_ <span class="op">=</span> embedding</span>
+<span id="cb1-1121"><a href="#cb1-1121" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.embedding_</span>
+<span id="cb1-1122"><a href="#cb1-1122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1123"><a href="#cb1-1123" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-1124"><a href="#cb1-1124" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Fit X into an embedded space.</span></span>
+<span id="cb1-1125"><a href="#cb1-1125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1126"><a href="#cb1-1126" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-1127"><a href="#cb1-1127" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb1-1128"><a href="#cb1-1128" aria-hidden="true" tabindex="-1"></a><span class="co">        X : {array-like, sparse matrix} of shape (n_samples, n_features) or </span><span class="ch">\</span></span>
+<span id="cb1-1129"><a href="#cb1-1129" aria-hidden="true" tabindex="-1"></a><span class="co">            (n_samples, n_samples)</span></span>
+<span id="cb1-1130"><a href="#cb1-1130" aria-hidden="true" tabindex="-1"></a><span class="co">            If the metric is &#39;precomputed&#39; X must be a square distance</span></span>
+<span id="cb1-1131"><a href="#cb1-1131" aria-hidden="true" tabindex="-1"></a><span class="co">            matrix. Otherwise it contains a sample per row. If the method</span></span>
+<span id="cb1-1132"><a href="#cb1-1132" aria-hidden="true" tabindex="-1"></a><span class="co">            is &#39;exact&#39;, X may be a sparse matrix of type &#39;csr&#39;, &#39;csc&#39;</span></span>
+<span id="cb1-1133"><a href="#cb1-1133" aria-hidden="true" tabindex="-1"></a><span class="co">            or &#39;coo&#39;. If the method is &#39;barnes_hut&#39; and the metric is</span></span>
+<span id="cb1-1134"><a href="#cb1-1134" aria-hidden="true" tabindex="-1"></a><span class="co">            &#39;precomputed&#39;, X may be a precomputed sparse graph.</span></span>
+<span id="cb1-1135"><a href="#cb1-1135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1136"><a href="#cb1-1136" aria-hidden="true" tabindex="-1"></a><span class="co">        y : None</span></span>
+<span id="cb1-1137"><a href="#cb1-1137" aria-hidden="true" tabindex="-1"></a><span class="co">            Ignored.</span></span>
+<span id="cb1-1138"><a href="#cb1-1138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1139"><a href="#cb1-1139" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-1140"><a href="#cb1-1140" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-1141"><a href="#cb1-1141" aria-hidden="true" tabindex="-1"></a><span class="co">        X_new : array of shape (n_samples, n_components)</span></span>
+<span id="cb1-1142"><a href="#cb1-1142" aria-hidden="true" tabindex="-1"></a><span class="co">            Embedding of the training data in low-dimensional space.</span></span>
+<span id="cb1-1143"><a href="#cb1-1143" aria-hidden="true" tabindex="-1"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb1-1144"><a href="#cb1-1144" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._validate_params()</span>
+<span id="cb1-1145"><a href="#cb1-1145" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.fit_transform(X)</span>
+<span id="cb1-1146"><a href="#cb1-1146" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb1-1147"><a href="#cb1-1147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-1148"><a href="#cb1-1148" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _more_tags(<span class="va">self</span>):</span>
+<span id="cb1-1149"><a href="#cb1-1149" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">&quot;pairwise&quot;</span>: <span class="va">self</span>.metric <span class="op">==</span> <span class="st">&quot;precomputed&quot;</span>}</span></code></pre></div>
+</div>
+</details>
+<p>以上です．</p>
+<h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
+pageへ戻る</a></h2>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
