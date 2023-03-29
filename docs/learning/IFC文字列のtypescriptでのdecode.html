@@ -1,0 +1,243 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHNT2JS6H2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EHNT2JS6H2');
+    </script>
+  <meta name="author" content="s246wv" />
+  <title>IFC文字列のTypeScriptでのdecode</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title">IFC文字列のTypeScriptでのdecode</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">s246wv</p></li>
+                            </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <h1
+id="ifc文字列のtypescriptでのdecode">IFC文字列のTypeScriptでのdecode</h1>
+<h2 id="やりたいこと">やりたいこと</h2>
+<p><code>\X2\64CD4F5C5BA4\X0\</code>を<code>操作室</code>に変換したいです．</p>
+<h2 id="できたもの">できたもの</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> decode_ifc_str <span class="op">=</span> (s<span class="op">:</span> <span class="dt">string</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> expr <span class="op">=</span> <span class="ss">/</span><span class="sc">\\</span><span class="ss">X2</span><span class="sc">\\</span><span class="ss">.</span><span class="sc">*?\\</span><span class="ss">X0</span><span class="sc">\\</span><span class="ss">/g</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> ret <span class="op">=</span> s<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> matchedStrings <span class="op">=</span> ret<span class="op">.</span><span class="fu">matchAll</span>(expr)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (matchedStrings) {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> decoder <span class="op">=</span> <span class="kw">new</span> <span class="fu">TextDecoder</span>(<span class="st">&quot;UTF-16be&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">let</span> matches <span class="kw">of</span> matchedStrings) {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> (<span class="kw">let</span> m <span class="kw">of</span> matches) {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> hex <span class="op">=</span> m<span class="op">.</span><span class="fu">replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">X2</span><span class="sc">\\</span><span class="st">&quot;</span><span class="op">,</span> <span class="st">&quot;&quot;</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">X0</span><span class="sc">\\</span><span class="st">&quot;</span><span class="op">,</span> <span class="st">&quot;&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> bf <span class="op">=</span> <span class="bu">Buffer</span><span class="op">.</span><span class="fu">from</span>(hex<span class="op">,</span> <span class="st">&#39;hex&#39;</span>)<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> decodedString <span class="op">=</span> decoder<span class="op">.</span><span class="fu">decode</span>(bf)<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                ret <span class="op">=</span> ret<span class="op">.</span><span class="fu">replaceAll</span>(m<span class="op">,</span> decodedString)<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ret<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="ifc文字列">IFC文字列</h2>
+<p>こういう文字列のことをIFC文字列とここでは呼んでいます．<br />
+<code>\X2\64CD4F5C5BA4\X0\</code></p>
+<p>ISO 10303で定められている文字列のエンコード方法に従って，/X2/,
+/X0/でUTFエンコードされたバイト文字列のことです．<br />
+参考:<br />
+<a
+href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000448.shtml">https://www.loc.gov/preservation/digital/formats/fdd/fdd000448.shtml</a><br />
+<a
+href="https://www.steptools.com/stds/step/IS_final_p21e3.html">https://www.steptools.com/stds/step/IS_final_p21e3.html</a></p>
+<h2 id="pythonとrubyでの実装">pythonとRubyでの実装</h2>
+<p><a
+href="https://teratail.com/questions/dzuudwcqsfx8l1">Unicodeエスケープされた文字列を変換する</a><br />
+<a
+href="https://stackoverflow.com/questions/43417411/how-to-decoding-ifc-using-ruby">How
+to decoding IFC using Ruby</a></p>
+<p>pythonとRubyでの実装は上記の通り見つけられましたが，IFCjs上で変換したかったので，TypeScriptでの実装をしたかったのです．</p>
+<h2 id="ifcjsのissueであげられた実装">IFCjsのIssueであげられた実装</h2>
+<p><a
+href="https://github.com/IFCjs/web-ifc/issues/368#issuecomment-1485711502">https://github.com/IFCjs/web-ifc/issues/368#issuecomment-1485711502</a><br />
+ここにありますが，これを使って<code>\X2\64CD4F5C5BA4\X0\</code>をデコードした結果が下記です．<br />
+## <code>室</code></p>
+<p>多分，<code>const unicodeChar = String.fromCharCode (parseInt (match[1], 16));</code>が怪しい．</p>
+<h2 id="できたもの-1"><a href="#できたもの">できたもの</a></h2>
+<p>上の見出しをクリックして頂ければ，上のコードに戻ります．</p>
+<h3 id="ちょっとだけ説明">ちょっとだけ説明</h3>
+<p><code>\X2\</code>,
+<code>\X0\</code>で囲まれた文字列を正規表現で取得します．<br />
+一つの文字列内に複数ある場合に備えて，<code>matchAll()</code>を使います．<br />
+<code>matchAll()</code>の返り値はRegExpMatchArrayのIteratorなので，不格好にfor文を2回回しています．<a
+href="https://note.affi-sapo-sv.com/js-matchall.php#title3">参考</a><br />
+正規表現で取れたのが<code>\X2\</code>,
+<code>\X0\</code>も含む全体が取れてしまっていたので，その部分を削除します．<br />
+削除するとバイト列が文字になっている状態なので，<code>Buffer.from(hex, 'hex')</code>でバイト列に変換します．<br />
+おもむろに<code>UTF-16be</code>でデコードして終わりです．</p>
+<h3
+id="詰まったところを解消するのにお世話になったサイトたち">詰まったところを解消するのにお世話になったサイトたち</h3>
+<ul>
+<li><a
+href="https://qiita.com/n0bisuke/items/1872b3217c3bb9aba507">Node.jsで16進数文字列を文字列に変換メモ</a></li>
+<li><a
+href="https://www.tohoho-web.com/js/regexp.htm">正規表現（RegExp）</a></li>
+<li><a
+href="https://typescriptbook.jp/reference/builtin-api/regexp">サバイバルTypeScript
+-RegExp</a></li>
+<li><a
+href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll">String.prototype.replaceAll()</a></li>
+<li><a
+href="https://www.javadrive.jp/javascript/string/index25.html">文字列を置換する(replace)</a></li>
+<li><a
+href="https://viglucci.io/articles/how-to-polyfill-buffer-with-webpack-5">How
+to polyfill Buffer with Webpack 5</a>
+<ul>
+<li>nodeでたたいている分には動いたコードを，React上で動かそうとしたときにBufferが使えなかった．ここに書かれているように，webpack.config.jsを作ったら動きました．</li>
+</ul></li>
+<li><a href="https://github.com/IFCjs/web-ifc/issues/368">[Bug]: String
+encoding - problem with special characters (v2) #368</a>
+<ul>
+<li>これではうまくいかなかったのですが，本家IFCjsのリポジトリで議論されているので，リンクを張っておきます．</li>
+</ul></li>
+<li><a
+href="https://s246wv.github.io/ifcjs-viewer-dev/">開発途中のビューア</a>
+<ul>
+<li>いずれindexに移動する．</li>
+</ul></li>
+<li><a
+href="https://github.com/s246wv/ifcjs-viewer-dev">上のリポジトリ</a></li>
+</ul>
+<h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
+pageへ戻る</a></h2>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
