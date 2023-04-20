@@ -1,0 +1,319 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHNT2JS6H2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EHNT2JS6H2');
+    </script>
+    <!--Google Adsense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742442508306011"
+     crossorigin="anonymous"></script>
+  <title>Towards an ontology of competition</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title">Towards an ontology of
+competition</span>
+        <ul class="nav pull-right doc-info">
+                              <li><p class="navbar-text">2021-11-18
+15:48:49</p></li>
+                  </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <h3
+id="sales-t.-p.-guarino-n.-guizzardi-g.-mylopoulos-j.-towards-an-ontology-of-competition.-in-12th-international-workshop-on-value-modeling-and-business-ontologies-vmbo.-9-pages-2018.">Sales,
+T. P., Guarino, N., Guizzardi, G., Mylopoulos, J.: Towards an ontology
+of competition. In <em>12th International Workshop on Value Modeling and
+Business Ontologies (VMBO)</em>. 9 pages, (2018).</h3>
+<p>https://vmbo2018.e3value.com/wp-content/uploads/sites/10/2018/02/VMBO_2018_paper_7.pdf</p>
+<h3 id="introduction">Introduction</h3>
+<p>Competitionって何？ってのを明らかにしたい．その性質とrelationships．<br />
+Competitionの議論は今までにもあるけれど，それらを包括するようなformal
+modelがない．<br />
+この原稿で扱いたいのは，competitionの動的な変化であるとか，competitorが別の人に対してactionしたらどうaffectするかみたいなことではない．GoogleはAmazonとcompeteしているかどうか，それはなぜかという問いに答えられるようなモデルを作ることがgoalである．</p>
+<p>どんなcompetitionかを問わず，principles of
+competitionはuniversalである．<br />
+まず，もっと一般的なレベルのcompetitionから始める．businessだけではなくて．<br />
+conflicts of interest<br />
+同時には満たされない2以上の目的に特徴づけられるsituation<br />
+例：JohnさんとMaryさんが同じポジションをめぐってcompeteします．同時にはそれぞれの目的が達成されません．<br />
+会社が2人分ポジションを用意した場合は，competitionがなくなる．<br />
+participantはagentでなければならない．<br />
+意図性(intentionality)がagentには付随している．<br />
+ただし，物理的エージェントだけではなく，集団や社会エージェントも含む．<br />
+例: the iPhone competes with Google
+Pixel.という文はそのまま扱わない．<br />
+これそのものはcompetitionではない．<br />
+例:
+8時間眠ると子供を作るという相反する目的が1人のagentの中にあるとき，それらはcompeteしていない．<br />
+Competitionは2人以上のagent間でそれらが持つgoalがconflictするような関係のコト．<br />
+そのconflictはagentらが気づいているかどうかは関係ない．<br />
+例:
+JohnさんとMaryさんの例では，それぞれが互いに応募しているかどうかを知っているかどうかに関わらず，competitionは発生している．<br />
+competitionに気づくことはどちらかというとrivalryにつよく関連づく．これを否定するものではない．</p>
+<p>Collective Demand: relationship that involves at least two agents and
+a common resource.<br />
+extrinsic and descriptive relationship.<br />
+agentのresource<br />
+demandsのために維持されているので，descriptive．-&gt;ええと，some
+individual aspects of its
+relataっていうのが要件で，それが，agents'<br />
+resource demandsということ．<br />
+これは，collectiveQuantityとcompetitivenessという2種類のqualityで特徴づけられる．<br />
+前者は，individual demand for
+resourceの総量のこと．後者は，その総量とcommon
+resourceの利用可能性の比率．<br />
+↑が，resource demandが同時に満たされないときにCompetitionになる．<br />
+collective demandよりavailability of a
+resourceが少なくなると起こる．で，そうなると，resourceがscarseとなり，それを探すagentがcompetitorになる．<br />
+competitorの間に結ばれる関係は，competes-with,
+これは再帰的でない．一人の人を指さないということと思う．irreflexive.<br />
+左右対称．symmetric．推移しない．non-transitive．<br />
+自分と競う人はいないから，irreflexiveとする．<br />
+symmetricも同様で，一方が他方とcompeteしているであれば，逆方向も成り立つ．<br />
+同時に異なるresourceに対して，複数のcompetition
+relationshipsはあるかもしれないからnon-transitive？<br />
+複数関係が結ばれてしまうと，transitiveだったら，AさんがCさんとも喧嘩することになる．<br />
+例えば，FacebookはGoogleとオンラインの広告客に対して競っている．同時に，GoogleとSpotifyは音楽streaming客に対して競っている．でも，FacebookはSpotifyと競っていない．</p>
+<p>competitorは誰か？<br />
+牛乳売っている会社とハイブランドファッション会社は顧客に対してcompeteしない．例え，両方の商品を買う顧客がいたとしても．<br />
+じゃあcompetitorをどうやって同定したらいいのか．<br />
+[13]によれば，同じ顧客のニーズを満たす製品とかサービスを提供しているなら，どんな2つの企業もcompeteしていると言える．<br />
+ある特定の顧客のニーズを満たすことを目指すことによって，顧客集団に対してvalue
+propositionを企業は作る．そうすることで，その企業はこのグループから顧客を獲得することができる．と直截的に仮定できる．
+value propositionを作る他の企業も顧客グループを欲しがる．それがconflict
+of interestを生む．それがcompetition．<br />
+ここで説明したのは，よく知られているmarket-level
+competitionというもので，以降で他の二種類の関係について説明する．indirect
+competitionとpotential competition．</p>
+<h3 id="direct-and-indirect-competition">3.1 Direct and Indirect
+Competition</h3>
+<p>Customer
+needはgoalと読み替えられる．goalは別のgoalを達成するためのmeansと読み替えられる．<br />
+Marketの階層は，それを定義するneedの階層から導かれる．<br />
+例：食べたいのかfast
+foodを食べたいのかhamburgerを食べたいのか．一番後ろなら，マクドナルドとバーガーキングだけがcompetitors．真ん中ならサブウェイもcompetitor．一番手前なら，冷凍ピザから高級すし店まで全てがcompetitor．<br />
+-&gt;このneedの階層は，goal-meanの関係には見えない．単純なspecializationとは呼べないのか？</p>
+<p>同じlow-level goalを満たすような人たちは，direct competitor.<br />
+同じhigh-level goalを満たすような人たちは，indirect competitor．<br />
+needの階層を利用して，marketのsegmentを説明できるよ．</p>
+<h3 id="potential-competition">3.2 Potential Competition</h3>
+<p>詳しくは[13]かな？<br />
+conflict of
+interestが顕在化していないのだったら，その関係は何にグラウンドするのか？<br />
+その答えはcapability equivalenceです．<br />
+Capabilityはdispositional property of agent．詳しくは[2]<br />
+何か行動を起こすパワーを引き出す何か？<br />
+例:<br />
+Netflixは，世界中のたくさんのユーザにビデオをストリーミングするcapabilityを持っている．Amazonは，注文から一日で商品を運ぶロジスティクスcapabilityを持っている．<br />
+Netflix's capability of streaming videos to a large number of users
+worldwide<br />
+Amazon's logistics capability of delivering products one day after
+orders<br />
+Capability equivalence refers to a relation between capabilities of
+different agents that enable them to achieve similar enough
+outcomes.</p>
+<p>Capability
+equivalenceってのは，似たような結果を達成することを可能にするような異なるエージェントのcapability間の関係を示す．<br />
+capability equivalenceがあるだけではpotential
+competitionは起こらない．<br />
+注目している企業がpotential
+competitorだと認められる要件は以下の通り<br />
+(i) singling out which of its capabilities are necessary for delivering
+its value proposition for a given market<br />
+与えられた市場に対して価値の差別化をできるものを提供するために必要なcapabilityを選び出すこと？<br />
+(ii) identifying which other firms have equivalent capabilities
+(i.e. which other firms could deliver similar value propositions) but
+that currently do not compete with them in the chosen market.<br />
+今はまだ競いあっていないけれど，他の企業がcapability
+equivalenceを持っていることが同定されること．つまり同じような価値の差別化できるものを提供できるということ．<br />
+postential competitionはextrinsic descriptive relationshipである．</p>
+<h3 id="related-work">4 Related work</h3>
+<p>enterprise and business modeling
+contributionsの中でcompetitionとかcompetitorが論じられているものと比較します．<br />
+c3value: is an extension of e3value<br />
+competition, customer and capabilityを分析するためのもの．<br />
+direct and indirect competition を表現する．<br />
+e3forces model: another extension<br />
+Porterさんのfive-forces frameworkを使う[15]<br />
+ビジネスバリューモデルにどんな環境的なファクターがあるかを記述する<br />
+3つのforcesはこの原稿で言っていたのと同じ意味でのcompetitive
+relationship．ライバル関係的なののと，threat of substitution? threat of
+new entrants<br />
+-&gt;この原稿で言っていたのよりはspecificな気がする．<br />
+最初の2つはdirect, indirectのことを言っている．3番目は，potential
+competitionである．<br />
+e3forcesは同じ関係について論じているのだけれど，何故それらの関係が維持されて，どのように認定されるのかの説明が十分ではない．ただ，Porterさんのアイデアにのっかっているだけ．<br />
+Enterprise Ontology[17]-&gt;Usholdさんの方<br />
+competitors: "a role of a vendor in a relationship with another vendor
+whereby one offers one or more products for sale that could limit the
+sales of one or more products of the other vendor"<br />
+この定義だと，binary direct competitionしか表せていない．</p>
+<h3 id="final-remarks">5 Final Remarks</h3>
+<p>next direction<br />
+multi-markert competitionに拡張する．<br />
+一つの市場で競いあうことはまれであるから．<br />
+asymmetric competitionとcompetitor
+relevanceを説明する上で必要である．<br />
+もっと現実的なシナリオ．a mix of competition and cooperation<br />
+だから，cooperationも分析対象である．<br />
+究極的には，前に構築したvalue proposition ontology[16]とcompetition
+ontology をくっつけること．competitive analysis of value
+propositionsを実現するフレームワークを作るため．</p>
+<p>2018.07.25</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@inproceedings</span>{<span class="ot">DBLP:conf</span>/<span class="ot">vmbo</span>/<span class="ot">SalesGGM18</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>    = {Tiago Prince Sales and</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               Nicola Guarino and</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               Giancarlo Guizzardi and</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               John Mylopoulos},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">editor</span>    = {Jaap Gordijn and</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               Erik Proper},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>     = {Towards an Ontology of Competition},</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">booktitle</span> = {Proceedings of the 12th International Workshop on Value Modeling and</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               Business Ontologies, {VMBO} 2018, Amsterdam, The Netherlands, February</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>               26th - 27th, 2018},</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">series</span>    = {{CEUR} Workshop Proceedings},</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">volume</span>    = {2239},</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pages</span>     = {64--73},</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {CEUR-WS.org},</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>      = {2018},</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span>       = {http://ceur-ws.org/Vol-2239/article<span class="ch">\_</span>6.pdf},</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">timestamp</span> = {Wed, 12 Feb 2020 16:44:27 +0100},</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">biburl</span>    = {https://dblp.org/rec/conf/vmbo/SalesGGM18.bib},</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bibsource</span> = {dblp computer science bibliography, https://dblp.org}</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<hr />
+<h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
+pageへ戻る</a></h2>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
