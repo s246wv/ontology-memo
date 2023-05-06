@@ -1,0 +1,442 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHNT2JS6H2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EHNT2JS6H2');
+    </script>
+    <!--Google Adsense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742442508306011"
+     crossorigin="anonymous"></script>
+  <meta name="author" content="s246wv" />
+  <title>Foundational ontologies in action</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <meta name="description" content="Borgo, S., Galton, A., & Kutz, O. (2022). Foundational ontologies in action. Applied Ontology, 17, 1-16.を説明します．" /><br />
+  <meta http-equiv="Content-Language" content="ja" />
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title">Foundational ontologies in action</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">s246wv</p></li>
+                            </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <h1 id="foundational-ontologies-in-action">Foundational ontologies
+in action</h1>
+<h3
+id="borgo-s.-galton-a.-kutz-o.-2022.-foundational-ontologies-in-action.-applied-ontology-17-1-16.">Borgo,
+S., Galton, A., &amp; Kutz, O. (2022). Foundational ontologies in
+action. Applied Ontology, 17, 1-16.</h3>
+<p><a
+href="https://content.iospress.com/articles/applied-ontology/ao220265">https://content.iospress.com/articles/applied-ontology/ao220265</a></p>
+<h2 id="ざっくりとしたまとめ">ざっくりとしたまとめ</h2>
+<p>Applied Ontology Vol. 17 No. 1のSpecial IssueのEditorial．<br />
+いろいろとあるfoundational ontologies
+(基盤的なオントロジーたち？)をいろいろなドメインの人たちが選択するときの助けになるような情報を提供してくれる特集である．<br />
+6種類の観点で例題を提供して，それらをどのように表現するかを記載してもらうことで，オントロジー間の比較を可能にする．例題は，ふつうに生活している人なら理解できるようなものの反面，自分のドメインにひきつけて考えられる人でないと読むのが難しいかもしれない．．テーブルの脚を替えたことを表現できたからなんなん？ってなるともったいないので，よく考えながら読む必要がありそう．</p>
+<h2 id="motivations-for-and-development-of-this-issue">Motivations for
+and development of this issue</h2>
+<p>日常や常識，状況を表現するためにfoundational
+ontologiesを利用する際に，ドメイン側の人が，どのfoundational
+ontologyを選択すれば良いかの参考情報を提供したい．知識工学の実践の中で，“<code>core aspect</code>”を表現するときのfoundational
+ontology毎の違いを示す．<code>core aspect</code>には，人工物とその部品の表現
+(artefacts and their components)，オブジェクトの属性の変化 (changes of
+an objects’s properties)，社会的状況の変化 (changes in social
+situations)を含む．<br />
+こういうモチベーションでの議論はFOUST (The FOUndational
+STance)というワークショップで議論がすすめられてきた．</p>
+<h3 id="participating-ontologies">Participating ontologies</h3>
+<ol type="1">
+<li>BFO (Basic Formal Ontology)</li>
+<li>DOLCE (Descriptive Ontology for Linguistic and Cognitive
+Engineering)</li>
+<li>GFO (General Formal Ontology)</li>
+<li>GUM (Generalized Upper Model)</li>
+<li>TUpper (A Top Level Ontology within Standards)</li>
+<li>UFO (Unified Foundational Ontology)</li>
+<li>YAMATO (Yet Another More Advanced Top-level Ontology)</li>
+</ol>
+<h2 id="historical-perspective">Historical perspective</h2>
+<p>歴史的に見ると，オントロジーの開発は，哲学，言語学，認知科学，コンピュータサイエンスなど，さまざまな分野から刺激を受けてきた．その中でも，哲学は最も根が深く，数千年前にまで遡ることができ，伝統的に形而上学で扱われてきた多くのトピックは，現在では本質的に”ontological”として認識されている．<br />
+コンピュータサイエンスの中でも，特に人工知能の分野と，その中の知識表現と知識工学の分野が，応用オントロジーの開発において大きな役割を担っている．これらのトピックは，自然言語テキストの理解と生成の両方を含む自然言語処理においても重要である．この分野の研究の多くは，哲学的，言語学的，認知的，あるいは計算機的なリソースを適切に利用した学際的なものなので，厳密に分けることにはあまり意味はない．</p>
+<h2 id="philosophical-issues">Philosophical issues</h2>
+<p>歴史的には，いろいろな分野でオントロジー開発が行われてきたが，実際にはそれらは哲学分野で議論されてきた課題でもある．代表的なものを下記に列挙する．</p>
+<ol type="1">
+<li>Conituants vs Occurrents (持続物と生起物)
+<ul>
+<li>“material
+objects”のように，時間の経過とともに様々な変化を遂げる存在と，“events”のように，時間の経過とともに連続体の変化として現れ，それ自身は変化しない存在との区別である．</li>
+</ul></li>
+<li>Universals vs Particulars (普遍と個物)
+<ul>
+<li>すべてのオントロジーは，“individuals”
+(個物)を表す用語と，個物を何らかの形で「同じ」ものとして数えることができる一般的なものを表す用語の区別を認識している．これらは，個物をメンバーとして含む”class”（例：すべての猫のクラス），共通の特性の顕著なセットを共有する個体をグループ化する”concept”（例：猫全般のアイデア），特定の個物をインスタンスとして関連付ける定義しにくい概念である（例：一般的な猫）“categories”,
+“kinds”, “universals”である．</li>
+</ul></li>
+<li>Concrete vs Abstract (具体と抽象)
+<ul>
+<li>空間や時間の中に存在する持続物や生起物などの具体と，空間や時間の外に存在する抽象を区別するのが一般的で，抽象の典型的な例が，数，関数，集合などの数学的実体である．</li>
+</ul></li>
+<li>Substance vs Accident (実体と***(適当な日本語が分からない．．))
+<ul>
+<li>（はっきりとは理解できていないけれど，）“Mars is
+red.”を表現しようとしたときに，“… is
+red.”という述語を想定するのか，“Mars”と”red”という二つのものに対して”is”という述語を想定するのかという考え方がある．さらに，後者に対しては，“red”をある個物に対する性質として”trope”という捉え方をするのか，universalな”red”を想定するのか，“qualities”という考え方を導入するのかという立場がある．</li>
+</ul></li>
+</ol>
+<h2 id="the-foust-template">The FOUST template</h2>
+<p>Foundational
+ontologiesを比較するためのテンプレート．これに従って各著者が論文を書いている．</p>
+<ul>
+<li>Introduction
+<ul>
+<li>背景やモチベーション</li>
+</ul></li>
+<li>Section 1. ““Principles and structure of ontology O”
+<ul>
+<li>オントロジーの背景，基準，使われているカテゴリーとプロパティと関係</li>
+</ul></li>
+<li>Section 2. “The formalisation of O”
+<ul>
+<li>形式化の方法</li>
+</ul></li>
+<li>Section 3. “Analysis and formalisation in O: examples”
+<ul>
+<li>与えられた例題をどう形式化しているか</li>
+</ul></li>
+<li>Section 4. “Ontology usage and community impact”
+<ul>
+<li>利用法，応用ドメイン</li>
+</ul></li>
+<li>Appendix
+<ul>
+<li>“ontological entity”, “formal expression”, “description in natural
+language”の3つの柱で考え方を要約する．</li>
+</ul></li>
+</ul>
+<p>上記の通りSection
+3が本論の核となる．共通する6つの例題について言及する．</p>
+<ol type="1">
+<li>Case 1: Composition/constitution
+<ul>
+<li>“There is a four-legged table made of wood. Some time later, a leg
+of the table is replaced. Even later, the table is demolished so it
+ceases to exist although the wood is still there after the demolition.”
+<ul>
+<li>木でできた4本脚のテーブルがある．しばらくして，そのテーブルの脚が交換された．さらにその後，そのテーブルは解体され，存在しなくなった．木は解体後も残っている．</li>
+</ul></li>
+<li>GOAL:
+この例では，オントロジーが材料，オブジェクト，コンポーネントとそれらの間の関係をモデル化しているかどうか，どのようにモデル化しているかを示すことを目的としている．</li>
+<li>FOCUS:
+時間を通した，木とテーブル，テーブルのパーツとの関係．(人工物や機能は焦点でない)</li>
+</ul></li>
+<li>Case 2: Roles
+<ul>
+<li>“Mr. Potter is the teacher of class 2C at Shapism School and resigns
+at the beginning of the spring break. After the spring break,
+Mrs. Bumblebee replaces Mr. Potter as the teacher of 2C. Also, student
+Mary left the class at the beginning of the break and a new student,
+John, joins in when the break ends.”
+<ul>
+<li>“シャピズムスクールの2Cクラスの教師であるMr.ポッターは，春休みの始めに辞職する．春休み明け，ポッター先生の後任としてバンブルビー先生が2Cクラスの教師となる．また，生徒のメアリーは休みのはじめにクラスを去り，休み明けに新しい生徒のジョンが加わる．”</li>
+</ul></li>
+<li>GOAL:
+この例は，オントロジーが役割，プレーヤー，組織間の関係をモデル化しているか，またどのようにモデル化しているかを示すことを目的としている．</li>
+<li>FOCUS:
+役割・プレイヤーの変化．教職ポジションの空白．生徒が出入りする中でのクラスの継続性．</li>
+</ul></li>
+<li>Case 3a: Property change
+<ul>
+<li>“A flower is red in the summer. As time passes, the colour changes.
+In autumn the flower is brown.”
+<ul>
+<li>夏には，その花は赤い．時間が経つにつれて，その色は変化する．秋になるとその花は茶色になる．</li>
+</ul></li>
+<li>GOAL:
+この例では，オントロジーが質/特性の変化をモデル化しているか，どのようにモデル化するかを示すことを目的としている．</li>
+<li>FOCUS: オブジェクトの色の変化</li>
+</ul></li>
+<li>Case 3b: Property change
+<ul>
+<li>“A man is walking when suddenly he starts walking faster and then
+breaks into a run.”
+<ul>
+<li>ある人が歩いていると，突然，歩くスピードが速くなり，走り出す．</li>
+</ul></li>
+<li>GOAL:
+この例では，イベント中の変化をオントロジーがモデル化するか，どのようにモデル化するかを示すことを目的としている．</li>
+<li>FOCUS: 速度や移動モードの変化</li>
+</ul></li>
+<li>Case 4: Event change
+<ul>
+<li>“A man is walking to the station, but before he gets there, he turns
+around and goes home.”
+<ul>
+<li>ある人が駅に向かって歩いているが，駅に着く前に引き返して家に帰る．</li>
+</ul></li>
+<li>GOAL:
+この例では，目標に向けた活動の変化を，オントロジーがモデル化するか，どのようにモデル化するかを示すことを目的としている．</li>
+<li>FOCUS:
+ある活動・イベントが完了せず，代わりに別の活動・イベントが完了した．</li>
+</ul></li>
+<li>Case 5: Concept evolution
+<ul>
+<li>“A marriage is a contract that is regulated by civil and social
+constraints. These constraints can change but the meaning of marriage
+continues over time.”
+<ul>
+<li>結婚とは，市民的・社会的制約によって規制される契約である．時とともに，これらの制約は変化しうるが，結婚の意味は継続する．</li>
+</ul></li>
+<li>GOAL:
+この例は，オントロジーが用語の意味の変化をモデル化しているか，どのようにモデル化しているかを示すことを目的としている．</li>
+<li>FOCUS:
+変化する資格（qualification）の中で，結婚の意味の連続性・不連続性</li>
+</ul></li>
+</ol>
+<h2 id="comparing-foundational-ontologies-in-action">Comparing
+foundational ontologies in action</h2>
+<p>個々のオントロジーでどう捉えるかはさておき，各例題について，どのような捉え方がありうるかを説明する．</p>
+<h3
+id="constitution-and-composition-tables-and-cut-off-legs">Constitution
+and composition: Tables and cut-off legs</h3>
+<p>Case 1でとりうる視点．</p>
+<ol type="1">
+<li>材料は置いておいて，テーブルや脚等のオブジェクトがある．</li>
+<li>テーブルロールや，脚ロール等を材料となるオブジェクトが担う．そういうオブジェクトがある．</li>
+<li>テーブル機能のような機能を持つ材料オブジェクトがある．</li>
+<li>1-3に示したオブジェクトとイベントがある．</li>
+<li>テーブルプロセスや脚プロセスのようなプロセスがある．</li>
+</ol>
+<h3 id="roles-the-school-teacher-and-the-student">Roles: The school
+teacher and the student</h3>
+<p>ものには，それがおかれる文脈によって特別な位置づけを持つことがある．その特別な位置づけのことを”role”と呼ぶ．例えば，“人”に対する”教師”など．<br />
+Case
+2での注目するところは，ロールをどう扱うかに加えて，教師を担うプレイヤーがいない期間の教師ロールをどのように扱うかというところにある．</p>
+<h3 id="qualities-of-objects-the-colour-of-the-flower">Qualities of
+objects: The colour of the flower</h3>
+<p>Case
+3aでは，ものの色をどう扱うか，色の変化をどう扱うかがポイントとなる．特に下記の5つのポイントで比較を行う．</p>
+<ol type="1">
+<li>Are qualities such as colour reified, that is, are they represented
+as entities within the ontology?
+<ul>
+<li>色のような性質は，オントロジーの中で実体として表現されているのか？</li>
+</ul></li>
+<li>Is the individual colour of the flower reified, as an entity
+inhering in the flower and distinct both from the flower and its value
+and from the colour of any other flower?
+<ul>
+<li>花の個々の色は，花に固有のものとして，花とその値や，他の花の色とも異なるものとして，表現されるのか？</li>
+</ul></li>
+<li>How is the value of the individual colour of the flower (if reified)
+related to whatever is denoted by the names such as ‘red’ and ‘brown’ we
+use to describe them?
+<ul>
+<li>花の個々の色の値は（表現されるなら），私たちがそれらを表現するために使用する「赤」や「茶」といった名前によって示されるものとどのように関連しているのか？</li>
+</ul></li>
+<li>How are these items denoted ‘red’ and ‘brown’ related to a broader
+structure such as a colour space within which they are defined?
+<ul>
+<li>「赤」や「茶」と表現されるものは，それらが定義される色空間のような広い構造とどのように関連しているのか？</li>
+</ul></li>
+<li>Is the event or process of change modelled explicitly or only
+implicitly through the contrast between start and end states?
+<ul>
+<li>変化のイベントやプロセスは，開始状態と終了状態の対比を通じて，明示的にモデル化されているか，あるいは暗黙的にしかモデル化されていないか？</li>
+</ul></li>
+</ol>
+<h3 id="qualities-of-events-the-speed-of-the-walk">Qualities of events:
+The speed of the walk</h3>
+<p>Case 3bについて，全てのオントロジーに共通するのは，“walking”フェーズ,
+“walking faster” or
+“accelerating”フェーズ，“running”フェーズの3つの連続的なフェーズで捉える．詳細部分に違いがある．<br />
+※詳細部分は本文に当たってほしい．端的にだけメモしておく．</p>
+<ul>
+<li>BFO, GFOは，三つのフェーズをラベルでだけ分ける．</li>
+<li>DOLCE, GUM,
+UFOでは，歩く速度を”quality”として表現するが，“walking”と”running”の違いは速度以外にもあると認識される．</li>
+<li>TUpperでは，それぞれのフェーズを脚の動きの系列として分解して扱い，その脚の動きが”steps”なのか”leaps”なのかで”walking”と”running”を分ける．</li>
+<li>YAMATOでは，古典的なoccurrentsをevent,
+変化しうるという意味でcontinuant-likeなprocessを分けて考える．</li>
+</ul>
+<h3
+id="events-and-their-goals-changing-destination-while-going-somewhere">Events
+and their goals: Changing destination while going somewhere</h3>
+<p>Case
+4は，家から駅へ歩き，あるポイントで家へ方向転換して，家に着くという物理的な側面だけではなく，「あるポイントで家へ方向転換」する際に，その人の意図や計画というものも変化しているという側面をどう扱うのかを知りたい．</p>
+<ul>
+<li>GFOでは，物理的な側面のみを扱う</li>
+<li>BFO, DOLCE, YAMATOは計画を明示的に参照する．</li>
+<li>BFOの場合，計画とは，行動と目的の仕様を含む計画の仕様の具体化である．</li>
+<li>YAMATOの分析もほぼ同様であるが，主な違いは，プロセスを進行中のエンティティとして扱い，その進行に伴って変化させることができる点である．</li>
+<li>DOLCEでは，計画は概念としてモデル化され，これはnon-physical
+endurantである．</li>
+<li>UFOでは，計画の代わりに，意図された目的地という概念を通じた，歩行者の意図を利用する．</li>
+<li>GUMの分析では，各歩行イベントは，イベントと場所を関連付ける目的地を持つものとしてモデル化される．</li>
+<li>TUpper分析では，このシナリオは，男性が駅までずっと歩き続けるか，駅に着く前に引き返して家に帰るかの2つのうちのどちらかが起こりうるものとして提示される．計画や意図に言及はしていないが，2つ目の選択肢は暗黙的に計画の変更を意味する．</li>
+</ul>
+<h3
+id="social-concepts-the-marriage-and-its-understanding-across-time">Social
+concepts: The marriage and its understanding across time</h3>
+<p>Case 5は毛色が変わって見えるかもしれないけれど，Social
+realityはfoundational
+ontologyがカバーするドメインの一つである．（意訳）</p>
+<ul>
+<li>捉え方の一例：用語は言語中で存続するが，それが示す意味は存続しない．<br />
+</li>
+<li>別の捉え方：オントロジーは，時間の経過とともにその規制的側面
+(regulatory aspects)が変化しても，意味が存続する．<br />
+</li>
+<li>もう一つの方法：内包 (intensional content)と外延 (extensional
+content)を区別すること．<br />
+詳しくは各論を参照してね．</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Article</span>{<span class="ot">Borgo2022</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">author</span>={Borgo, Stefano and Galton, Antony and Kutz, Oliver},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span>={Foundational ontologies in action},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">journal</span>={Applied Ontology},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">year</span>={2022},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">publisher</span>={IOS Press},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">volume</span>={17},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">pages</span>={1-16},</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">keywords</span>={Foundational ontologies; upper ontologies; BFO; DOLCE; GFO; GUM; TUpper; UFO; YAMATO},</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">note</span>={1},</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">issn</span>={1875-8533},</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">doi</span>={10.3233/AO-220265},</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">url</span>={https://doi.org/10.3233/AO-220265}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<hr />
+<h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
+pageへ戻る</a></h2>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
