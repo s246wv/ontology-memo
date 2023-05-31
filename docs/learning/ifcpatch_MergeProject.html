@@ -55,8 +55,6 @@
     <!--Google Adsense-->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742442508306011"
      crossorigin="anonymous"></script>
-  <meta name="description" content="IfcOpenShellのIfcPatchを使って，複数のIFCファイルを統合する方法を説明します．" />
-  <meta http-equiv="Content-Language" content="ja" />
   <title>ifcopenshellでMergeProject</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
@@ -158,13 +156,17 @@ https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.7.0#contents</p>
 <a
 href="https://blenderbim.org/docs-python/ifcpatch.html">公式のドキュメント</a>に書かれている例題だと，<code>ExtractElements</code>を使って，<code>IfcWall</code>を取得するコードが書かれていますが，これだけなら他の方法（例えば，<code>walls = model.by_type('IfcWall')</code>）もあるので，使い分けがよくわかっていません．</p>
 <h2 id="mergeprojectの方法">MergeProjectの方法</h2>
-<p>本題です． ### importできるようにする前処理 - <a
-href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.7.0">IfcOpenShell</a>から一通りリポジトリをクローンします．
--
-その中から<code>src/ifcpatch/ifcpatch</code>を<code>site-packages/</code>直下に置きます．
--
-venvを使っているようであれば，例えば，<code>./venv/lib/python3.10/site-packages/</code>に置きます．
-- 終わりです．</p>
+<p>本題です．</p>
+<h3 id="importできるようにする前処理">importできるようにする前処理</h3>
+<ul>
+<li><a
+href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.7.0">IfcOpenShell</a>から一通りリポジトリをクローンします．</li>
+<li>その中から<code>src/ifcpatch/ifcpatch</code>を<code>site-packages/</code>直下に置きます．
+<ul>
+<li>venvを使っているようであれば，例えば，<code>./venv/lib/python3.10/site-packages/</code>に置きます．</li>
+</ul></li>
+<li>終わりです．</li>
+</ul>
 <h3 id="公式で説明されている方法">公式で説明されている方法</h3>
 <p><a
 href="https://blenderbim.org/docs-python/autoapi/ifcpatch/recipes/MergeProject/index.html">公式のドキュメント</a>だと，こう書かれています．</p>
@@ -178,16 +180,27 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <h3 id="動く方法"><strong>動く方法</strong></h3>
 <p>結果的には下記のように，<code>file</code>をキーにして統合元のモデルを渡せば動きます．</p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ifcpatch.execute({<span class="st">&quot;input&quot;</span>: model, <span class="st">&quot;file&quot;</span>: ifcopenshell.<span class="bu">open</span>(model) <span class="st">&quot;recipe&quot;</span>: <span class="st">&quot;MergeProject&quot;</span>, <span class="st">&quot;arguments&quot;</span>: [<span class="st">&quot;/path/to/model2.ifc&quot;</span>]})</span></code></pre></div>
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ifcpatch.execute({<span class="st">&quot;input&quot;</span>: model, <span class="st">&quot;file&quot;</span>: ifcopenshell.<span class="bu">open</span>(model), <span class="st">&quot;recipe&quot;</span>: <span class="st">&quot;MergeProject&quot;</span>, <span class="st">&quot;arguments&quot;</span>: [<span class="st">&quot;/path/to/model2.ifc&quot;</span>]})</span></code></pre></div>
 <p>ここで，<code>file</code>として与えているものは，<a
 href="https://blenderbim.org/docs-python/autoapi/ifcopenshell/file/index.html#ifcopenshell.file.file">ifcopenshell.file.file</a>のことのようで，IFCファイルのパスを渡してはいけないようです．<code>ifcopenshell.open()</code>で読み込んだものを渡す必要があります．<br />
 このあたりの情報がドキュメントの例題ベースだと分かりにくい印象です．</p>
 <h2 id="蛇足と覚書">蛇足と覚書</h2>
-<p>ドキュメントに書かれている通り，下記に注意します． &gt;
-2つのIfcProject要素を1つにまとめる以外、それ以上の処理は行われないことに注意してください。つまり、空間階層が重複してしまう可能性があります（例：2つのサイト、2つのビルなど）。
-&gt;<br />
-つまり，<code>IfcSite</code>や<code>IfcBuilding</code>要素は重複してしまうので，何らかの方法で統合する必要があります．本来的にはモデル作成時点で，同じ建物には同じGUIDを与えて，GUIDを頼りに統合出来れば良いのでしょうが，現実的にはそういう作られ方をしているデータは少ないのかなと思います．</p>
+<p>ドキュメントに書かれている通り，下記に注意します．</p>
+<blockquote>
+<p>2つのIfcProject要素を1つにまとめる以外、それ以上の処理は行われないことに注意してください。つまり、空間階層が重複してしまう可能性があります（例：2つのサイト、2つのビルなど）。</p>
+</blockquote>
+<p>つまり，<code>IfcSite</code>や<code>IfcBuilding</code>要素は重複してしまうので，何らかの方法で統合する必要があります．本来的にはモデル作成時点で，同じ建物には同じGUIDを与えて，GUIDを頼りに統合出来れば良いのでしょうが，現実的にはそういう作られ方をしているデータは少ないのかなと思います．</p>
 <p>以上です．</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>2023-03-22 第一稿 <br> 2023-05-31 第二稿 レイアウト修正 <br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
 pageへ戻る</a></h2>
             </div>
