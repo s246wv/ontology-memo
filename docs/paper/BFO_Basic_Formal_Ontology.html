@@ -1,0 +1,318 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHNT2JS6H2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EHNT2JS6H2');
+    </script>
+    <!--Google Adsense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742442508306011"
+     crossorigin="anonymous"></script>
+  <meta name="author" content="s246wv" />
+  <title>BFO: Basic Formal Ontology</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <meta name="description" content="Otte, J. Neil, Beverley, John, and Ruttenberg, Alan. BFO: Basic Formal Ontology. 1 Jan. 2022  17 – 43.を説明します．" />
+  <meta http-equiv="Content-Language" content="ja" />
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title"><p>BFO: Basic Formal Ontology</p></span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">s246wv</p></li>
+                            </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <h1 id="bfo-basic-formal-ontology">BFO: Basic Formal Ontology</h1>
+<h3
+id="otte-j.-neil-beverley-john-and-ruttenberg-alan.-bfo-basic-formal-ontology.-1-jan.-2022-17-43.">Otte,
+J. Neil, Beverley, John, and Ruttenberg, Alan. ‘BFO: Basic Formal
+Ontology’. 1 Jan. 2022 : 17 – 43.</h3>
+<p><a
+href="https://content.iospress.com/articles/applied-ontology/ao220262">https://content.iospress.com/articles/applied-ontology/ao220262</a></p>
+<h2 id="abstractの訳">Abstractの訳</h2>
+<p>Basic Formal Ontology
+(BFO)は，36のクラスからなるトップレベルのオントロジーで，科学研究のあらゆる領域における情報の統合，検索，分析をサポートするために設計され，現在，世界中の350以上のオントロジープロジェクトで採用されている．BFOは，物理学，医学，心理学などのドメインに特化した用語を含まない，真のトップレベルオントロジーである．本論文では，共通的な変化の種類を示す一連の事例が，BFOフレームワークを用いたuniversals，定義されたクラス，および関係によって，どのように表現されるかを示すものである．また，BFOを使用する他のオントロジストにテンプレートを提供し，異なるトップレベルのオントロジーを使用するオントロジストが提案する戦略との比較を容易にするために，これらのケースに関する議論を提供する．</p>
+<h2 id="introduction">Introduction</h2>
+<p>BFOは，他のトップレベルオントロジーと区別するために，以下の原則を遵守している．</p>
+<ul>
+<li>Ontological Realism
+<ul>
+<li>BFOは，言語，概念や現実に関する心的表現ではなく，根本的に現実の表現で構成されている．</li>
+</ul></li>
+<li>Fallibillism
+<ul>
+<li>universalsは変化しないけれど，その理解はは変化しなければならないので，BFOは，科学的な発展を追跡し．科学の発展に合わせてオントロジーを更新する．</li>
+</ul></li>
+<li>Adequatism
+<ul>
+<li>あるドメインのものが，他の種類のものに還元可能
+(reducible)であると仮定すべきではない．例えば，物理学で記述されるもので他のドメインを言い換える必要はない．</li>
+</ul></li>
+</ul>
+<h2 id="principles-and-structure-of-bfo">Principles and structure of
+BFO</h2>
+<p>次の基礎的なカテゴリを適用する．</p>
+<ul>
+<li>universal と particular
+<ul>
+<li>particular
+は特定の時間と場所に制約される個物で，universalからインスタンスを作るが，それ自体はインスタンスにならない．</li>
+<li>universal
+は時間と空間に反復的に現れうるもので，不特定多数のインスタンス化されたparticularを持ちうる．</li>
+</ul></li>
+<li>continuant と occurrent
+<ul>
+<li>continuant
+は同一性を維持したまま時間経過に耐えるもので，時間的な部分を持たず，存在しているなら完全な存在である．（※日本語適切か自信ない）</li>
+<li>occurrent は時間経過に対して展開し，時間的な部分を持つ．</li>
+</ul></li>
+<li>relations
+<ul>
+<li>universal-universal: parent-type と sub-typeを結ぶ関係</li>
+<li>universal-particular: particular と
+universalの間にある関係のインスタンス</li>
+<li>particula-particular:
+詳細はないけれど，上記以外ということと思う．</li>
+<li>後者2つはtime-indexedされうる．</li>
+</ul></li>
+</ul>
+<p>※6つの例題を説明するのに必要なクラスの説明が本文には書かれているが，省略．必要であれば戻ってくる．</p>
+<h2 id="formalization-of-bgo-in-first-order-logic">Formalization of BGO
+in first-order logic</h2>
+<p>おおまかには，Fig. 1とFig. 2を参照のこと．</p>
+<p>関係だけ列挙しておく．段下げでちょっと説明．</p>
+<ul>
+<li><code>continuant part of</code>
+<ul>
+<li>time indexed</li>
+</ul></li>
+<li><code>occurrent part of</code></li>
+<li><code>proper continuant part of</code>
+<ul>
+<li>transitive</li>
+</ul></li>
+<li><code>proper occurrent part of</code>
+<ul>
+<li>transitive</li>
+</ul></li>
+<li><code>specifically depends on</code></li>
+<li><code>inhere in</code></li>
+<li><code>bearer of</code>
+<ul>
+<li><code>inhere in</code> の反対</li>
+</ul></li>
+<li><code>located in</code></li>
+<li><code>member part of</code>
+<ul>
+<li>object aggregateを表す</li>
+<li>not transitive</li>
+</ul></li>
+<li><code>participate in</code></li>
+<li><code>temporal part of</code></li>
+<li><code>has first instant</code></li>
+<li><code>has last instant</code></li>
+<li><code>precede</code></li>
+</ul>
+<h2 id="analysis-and-formalization-in-bfo-examples">Analysis and
+formalization in BFO: Examples</h2>
+<p>前提として，例を説明するために利用する”information content entities”
+(ICE) について説明する．<br />
+An information content entity (ICE) is a <strong>generically dependent
+continuant</strong> that <strong>is about</strong> some entity and can
+be <strong>concretized</strong>.
+(日本語に翻訳しづらいので原文で。。)<br />
+雰囲気としてはFig. 3を参照してください．<br />
+以降の例題については，<a
+href="https://s246wv.work/paper/Foundational_ontologies_in_action.html#the-foust-template">このあたり</a>を参照しながら見ると良いかもしれません．</p>
+<h3 id="composition-constitution">Composition / constitution</h3>
+<p>Case 1の話． Table 1-3にclasses, particulars, relationsを示す．<br />
+Fig. 4かAxiomかが間違っているのか？いずれにせよ，Tableの本質はTable
+Functionを持つことにありそう．Continuantとしては，あくまでPortion of
+woodのinstanceとして表現される．Labelとそれを捉える人間側の問題かもしれないけれど，Portion
+of woodのinstanceに対して，“table 1”等のLabelを付けてしまうと，Table
+Functionを失ったときに，直観とずれてしまう．が，labelはICEとして表現して，そこにもtemporal
+intervalを持たせるのかもしれない．ここではそのあたりの表層的な話は論じられていない．</p>
+<h3 id="roles">Roles</h3>
+<p>Case 2の話．<br />
+ここでは，生徒については教師と同様に扱えるため，Mr. PotterとMrs.
+Bumblebeeのみを扱う．<br />
+Case 1と同様に，表現に必要な材料はTable 4-6に示す．<br />
+teacher
+roleは人にuniqueに存在する．なので，「学校で教師を募集している」ような状況でいうteacher
+roleを表現することはできない？（このような状況は今回の例題の範疇ではないが．）</p>
+<h3 id="property-change">Property change</h3>
+<p>(本文では，Case 3とだけ示されているが，) Case 3aの話．<br />
+表現に必要な材料はTable 7-9に示す．<br />
+例題の文章としては，明示されていないが，花弁の色が変化することをここでは表現する．<br />
+例題とはずれたところだけれど，summerやfallはprocessとして扱うのね．色が赤から茶色へ変化する過程の中間色みたいなものに関する言及はあるけれど，具体的な表現方法には触れらていない．</p>
+<p>引き続いて，Case 3bの話．<br />
+Processは変化しない．<br />
+歩いたり，走ったり，加速したりするのは，一つの移動プロセスの部分として扱われる．<br />
+時間ごとの移動速度の変化のようなものは，次の例題で説明するような方法を用いて補完的に表現され得る．</p>
+<h3 id="event-change">Event change</h3>
+<p>Case 4の話．<br />
+最初，この人は駅へ向けて歩くという<code>plan</code>を持ち，実行している．駅に到着する前に，その<code>plan</code>は棄却され，別のもの（家へ行く）を生成する．という解釈をする．<br />
+駅へ向かって歩くというのが<code>plan1</code>で，引き返した時点で生成された家へ向かって歩くというのが，<code>plan2</code>となる．<code>plan2</code>の部分である<code>home objective specification</code>（ゴールに相当するもの）は，<code>home action specification</code>（planned
+action）によって達成される（<code>achieves planned objective</code>の関係が引かれる）．<br />
+※一連のイベントが終了した後なので，<code>plan2</code>は”達成した”と言えるのか？</p>
+<h3 id="concept-evolution">Concept evolution</h3>
+<p>Case 5の話．<br />
+例題をもう少し具体化する．ここでは，アメリカの1967年から2015年までの結婚契約と2015年以降のものを考える．<br />
+※ちょっと複雑できちんと理解しきれていない．．<br />
+候補者の資格の変更と関連する役割の変更の，少なくとも2種類の結婚に対する変化を，BFOは表現することが出来る．</p>
+<h2 id="ontology-usage-and-community-impact">Ontology usage and
+community impact</h2>
+<p>The Open Biological and Biomedical Ontology (OBO) Foundry および The
+Industrial Ontology Foundry (IOF)
+のコアアーキテクチャとして、BFOはさまざまな科学分野で広く使用されている．現在でも350以上のオントロジーで利用されており，今後も増加するだろう．</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Article</span>{<span class="ot">Otte2022</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">author</span>={Otte, J. Neil</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>and Beverley, John</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>and Ruttenberg, Alan},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span>={BFO: Basic Formal Ontology},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">journal</span>={Applied Ontology},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">year</span>={2022},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">publisher</span>={IOS Press},</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">volume</span>={17},</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">pages</span>={17-43},</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">keywords</span>={BFO; top-level ontology; ontological analysis; formal ontology},</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">abstract</span>={Basic Formal Ontology (BFO) is a top-level ontology consisting of thirty-six classes, designed to support information integration, retrieval, and analysis across all domains of scientific investigation, presently employed in over 350 ontology projects around the world. BFO is a genuine top-level ontology, containing no terms particular to material domains, such as physics, medicine, or psychology. In this paper, we demonstrate how a series of cases illustrating common types of change may be represented by universals, defined classes, and relations employing the BFO framework. We provide discussion of these cases to provide a template for other ontologists using BFO, as well as to facilitate comparison with the strategies proposed by ontologists using different top-level ontologies.},</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">note</span>={1},</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">issn</span>={1875-8533},</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">doi</span>={10.3233/AO-220262},</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dt">url</span>={https://doi.org/10.3233/AO-220262}</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<hr />
+<h2 id="index-pageへ戻る"><a href="https://s246wv.work">index
+pageへ戻る</a></h2>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
